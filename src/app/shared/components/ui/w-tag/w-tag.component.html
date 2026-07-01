@@ -1,0 +1,8 @@
+<p-tag [rounded]="rounded()" [class]="styleClass()" aria-label="Status: {{ label() }}">
+  <span class="w-status-tag__content">
+    @if (icon()) {
+      <ng-icon [name]="icon()!" class="w-status-tag__icon" />
+    }
+    <span class="w-status-tag__label">{{ label() }}</span>
+  </span>
+</p-tag>

@@ -1,0 +1,50 @@
+<div class="p-8">
+  <h2 class="text-ink-primary-w font-medium text-xl mb-2">Bienvenido de nuevo</h2>
+  <p class="text-ink-secondary-w text-sm">Inicia sesión para acceder a tus favoritos.</p>
+
+  <form [formGroup]="formService.form" class="mt-8 space-y-4">
+    <div class="flex flex-col gap-1.5">
+      <label for="email" class="text-sm text-ink-primary-w">Correo electrónico</label>
+      <input
+        pInputText
+        id="email"
+        aria-describedby="email-help"
+        formControlName="email"
+        variant="filled"
+        errorMessage
+        [showErrors]="formService.showErrorSignal()"
+      />
+    </div>
+    <div class="flex flex-col gap-1.5">
+      <label for="password" class="text-sm text-ink-primary-w">Contraseña</label>
+      <p-password
+        id="password"
+        formControlName="password"
+        variant="filled"
+        fluid
+        [toggleMask]="true"
+        autocomplete="off"
+        errorMessage
+        [showErrors]="formService.showErrorSignal()"
+      >
+      </p-password>
+    </div>
+    <div class="flex justify-end">
+      <a class="text-sm text-ink-primary-w hover:underline cursor-pointer" routerLink="/auth/login"
+        >¿Olvidaste tu contraseña?</a
+      >
+    </div>
+    <p class="text-ink-muted-w text-xs">
+      Al iniciar sesión, aceptas nuestros Términos de servicio y Política de privacidad.
+    </p>
+    <div>
+      <p-button label="Iniciar sesión" fluid (onClick)="onLogin()"></p-button>
+    </div>
+    <div>
+      <a class="text-sm text-ink-muted-w cursor-pointer" routerLink="/auth/register"
+        >¿No tienes una cuenta?
+        <span class="text-ink-primary-w hover:underline">Crea una cuenta</span></a
+      >
+    </div>
+  </form>
+</div>

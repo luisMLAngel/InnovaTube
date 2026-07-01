@@ -1,0 +1,170 @@
+// Animaciones para transiciones de menú
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Clases para animaciones
+.animate-slide-in {
+    animation: slideInFromLeft 0.3s ease-out;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+// Estados de transición del menú
+.menu-enter {
+    animation: slideInFromLeft 0.3s ease-out;
+
+    .menu-item-animated {
+        animation: fadeInUp 0.3s ease-out backwards;
+    }
+}
+
+.menu-exit {
+    animation: slideOutToRight 0.2s ease-in;
+    opacity: 0;
+}
+
+// Botón de regreso
+.back-button {
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &:hover {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+}
+
+// Animación del título del menú
+.menu-title {
+    h3 {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right,
+                    var(--color-stroke-w) 0%,
+                    transparent 100%);
+        }
+    }
+}
+
+// Estilos para el scroll suave
+nav {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-stroke-w) transparent;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-stroke-w);
+        border-radius: 3px;
+
+        &:hover {
+            background-color: var(--color-ink-muted-w);
+        }
+    }
+}
+
+// Contenedores principales
+.sidebar-container {
+    position: relative;
+}
+
+.sidebar-content {
+    width: 100%;
+    height: 100%;
+}
+
+// Borde interactivo estilo Linear app
+.resize-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 100%;
+    cursor: w-resize;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &.active {
+        .resize-handle-indicator {
+            @apply bg-primary-w w-[2px] opacity-100;
+        }
+    }
+}
+
+.resize-handle-indicator {
+    width: 1px;
+    height: 100%;
+    background-color: var(--color-stroke-w);
+    opacity: 0.5;
+    transition: all 0.2s ease;
+    border-radius: 2px;
+}
+
+// Remover estilos de botones antiguos
+.toggle-button,
+.expand-button {
+    display: none;
+}

@@ -1,0 +1,37 @@
+# Dependencies
+node_modules
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist
+.angular
+.output
+.next
+.nuxt
+build
+out
+
+# Environment files
+.env
+.env.*
+
+# IDE
+.vscode
+.idea
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage
+.nyc_output
+
+# Misc
+*.min.js
+*.min.css

@@ -1,0 +1,67 @@
+<div class="sidebar-container w-full h-full bg-surface-w flex relative overflow-hidden">
+  <!-- Contenido del sidebar (solo visible cuando está expandido) -->
+  @if (!isCollapsed()) {
+    <div class="sidebar-content w-full h-full p-4 flex flex-col gap-4">
+      <!-- Header con selector de organización -->
+      <app-organization-selector [organizationName]="'InnovaTube'"></app-organization-selector>
+
+      <!-- Boton de regreso (cuando no estás en el menú principal) -->
+      @if (canGoBack()) {
+        <button
+          (click)="goBack()"
+          class="back-button flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-selected-w border border-stroke-w group animate-slide-in"
+        >
+          <ng-icon
+            name="tablerChevronLeft"
+            class="text-base text-ink-secondary-w transition-transform group-hover:-translate-x-1"
+          ></ng-icon>
+          <span class="text-sm font-medium text-ink-secondary-w">{{
+            currentMenu().backToLabel
+          }}</span>
+        </button>
+      }
+
+      <!-- Título del menú actual (opcional, solo si no es el menú principal) -->
+      @if (currentMenuId() !== 'main') {
+        <div class="menu-title px-3 py-1 animate-fade-in">
+          <h3 class="text-xs font-medium text-ink-muted-w uppercase tracking-wider">
+            {{ currentMenu().title }}
+          </h3>
+        </div>
+      }
+
+      <!-- Menu Items con animacion -->
+      <nav class="flex-1 overflow-y-auto">
+        <ul
+          class="flex flex-col gap-1 transition-all duration-300"
+          [class.menu-exit]="isTransitioning()"
+          [class.menu-enter]="!isTransitioning()"
+        >
+          @for (item of currentMenuItems(); track item; let i = $index) {
+            <app-sidebar-menu-item
+              [item]="item"
+              [isCollapsed]="isCollapsed()"
+              [style.animation-delay]="!isTransitioning() ? i * 30 + 'ms' : '0ms'"
+              class="menu-item-animated"
+            />
+          }
+        </ul>
+      </nav>
+
+      <app-user-profile-section [userName]="user()?.name!"></app-user-profile-section>
+      <!-- 
+    tengo una idea, en configuracion pondre una seccion de UI y que el usuario decida que info poner ahi, si mensajes motivacionales o tips o status accionables
+    --></div>
+  }
+
+  <!-- Borde interactivo para colapsar/expandir -->
+  <div
+    class="resize-handle"
+    [class.active]="isResizeHandleHovered"
+    (mouseenter)="isResizeHandleHovered = true"
+    (mouseleave)="isResizeHandleHovered = false"
+    (click)="toggleCollapse()"
+  >
+    <div class="resize-handle-indicator"></div>
+  </div>
+</div>

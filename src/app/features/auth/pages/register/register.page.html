@@ -1,0 +1,77 @@
+<div class="p-8">
+  <h2 class="text-ink-primary-w font-medium text-xl mb-2">Crea tu cuenta en InnovaTube</h2>
+  <p class="text-ink-secondary-w text-sm">Descubre videos y empieza a guardar tus favoritos.</p>
+
+  <form [formGroup]="formService.form" class="mt-8 space-y-4">
+    <div class="flex flex-col gap-1.5">
+      <label for="username" class="text-sm text-ink-primary-w">Nombre</label>
+      <input
+        pInputText
+        id="username"
+        aria-describedby="username-help"
+        formControlName="name"
+        variant="filled"
+        errorMessage
+        [showErrors]="formService.showErrorSignal()"
+      />
+    </div>
+    <div class="flex flex-col gap-1.5">
+      <label for="lastname" class="text-sm text-ink-primary-w">Apellidos</label>
+      <input
+        pInputText
+        id="lastname"
+        aria-describedby="lastname-help"
+        formControlName="lastname"
+        variant="filled"
+        errorMessage
+        [showErrors]="formService.showErrorSignal()"
+      />
+    </div>
+    <div class="flex flex-col gap-1.5">
+      <label for="email" class="text-sm text-ink-primary-w">Correo electrónico</label>
+      <input
+        pInputText
+        id="email"
+        aria-describedby="email-help"
+        formControlName="email"
+        variant="filled"
+        errorMessage
+        [showErrors]="formService.showErrorSignal()"
+      />
+    </div>
+    <div class="flex flex-col gap-1.5">
+      <label for="password" class="text-sm text-ink-primary-w">Contraseña</label>
+      <p-password
+        id="password"
+        formControlName="password"
+        variant="filled"
+        fluid
+        [toggleMask]="true"
+        autocomplete="off"
+        strongRegex="^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$"
+        promptLabel="Seguridad"
+        weakLabel="Débil"
+        mediumLabel="Medio"
+        strongLabel="Fuerte"
+        errorMessage
+        [showErrors]="formService.showErrorSignal()"
+      >
+        <ng-template #footer>
+          <app-password-feedback [password]="formService.passwordSignal()"></app-password-feedback>
+        </ng-template>
+      </p-password>
+    </div>
+    <p class="text-ink-muted-w text-xs">
+      Estás a un paso de crear tu cuenta. Revisa que los datos sean correctos.
+    </p>
+    <div>
+      <p-button label="Crear cuenta" fluid (onClick)="onRegister()"></p-button>
+    </div>
+    <div>
+      <a class="text-sm text-ink-muted-w cursor-pointer" routerLink="/auth/login"
+        >¿Ya tienes una cuenta?
+        <span class="text-ink-primary-w hover:underline">Inicia sesión</span></a
+      >
+    </div>
+  </form>
+</div>

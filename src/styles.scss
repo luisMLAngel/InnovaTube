@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import './styles/index.scss';
+
+@layer reset-base, tailwind-base, primeng, tailwind-utilities;
+
+@layer reset-base {
+
+    *,
+    *::after,
+    *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+}
+
+@layer tailwind-base {
+    @tailwind base;
+}
+
+@layer tailwind-utilities {
+    @tailwind components;
+    @tailwind utilities;
+}
+
+html,
+body {
+    @apply bg-canvas-w text-base h-[100vh] w-[100vw] antialiased font-sans;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME TRANSITIONS (optimizado para rendimiento)
+   ═══════════════════════════════════════════════════════════════ */
+:root.theme-transition {
+    /* Solo transición en variables CSS, no en todos los elementos */
+    transition: none;
+}
+
+.p-splitter-gutter {
+    background: var(--border-subtle);
+    width: 2px;
+    transition: background 0.2s ease;
+}
+
+/* Main */
+.app-main {
+    display: grid;
+    grid-template-rows: var(--header-height) 1fr;
+    height: 100%;
+    min-width: 0;
+}
+
+/* Header */
+.app-header {
+    @apply bg-canvas-w;
+}
+
+/* Content */
+.app-content {
+    @apply py-3;
+    overflow: auto;
+    background: var(--bg-app);
+}
+
+/* Footer */
+.app-footer {
+    @apply bg-canvas-w;
+}

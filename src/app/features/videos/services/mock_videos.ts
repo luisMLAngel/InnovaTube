@@ -1,0 +1,58 @@
+import { Video } from '../interfaces/video.interface';
+
+export const MOCK_VIDEOS: Video[] = [
+  {
+    id: 'v1',
+    youtubeVideoId: 'dQw4w9WgXcQ',
+    title: 'Curso completo de Angular 22: Signals, SignalStore y Standalone Components',
+    thumbnailUrl: 'https://picsum.photos/seed/video1/320/180',
+    channelTitle: 'DevCode Academy',
+    publishedAt: '2026-05-12T10:00:00Z',
+    isFavorite: false,
+  },
+  {
+    id: 'v2',
+    youtubeVideoId: 'jNQXAC9IVRw',
+    title: 'NestJS desde cero: arquitectura modular y buenas prácticas',
+    thumbnailUrl: 'https://picsum.photos/seed/video2/320/180',
+    channelTitle: 'Backend Masters',
+    publishedAt: '2026-04-28T15:30:00Z',
+    isFavorite: true,
+  },
+  {
+    id: 'v3',
+    youtubeVideoId: 'M7lc1UVf-VE',
+    title: 'Tailwind CSS en 2026: nuevas utilidades y mejores prácticas',
+    thumbnailUrl: 'https://picsum.photos/seed/video3/320/180',
+    channelTitle: 'Frontend Weekly',
+    publishedAt: '2026-06-01T08:15:00Z',
+    isFavorite: false,
+  },
+  {
+    id: 'v4',
+    youtubeVideoId: 'kxopViU98Xo',
+    title: 'Godot 4: creando un juego estilo Stardew Valley - Parte 1',
+    thumbnailUrl: 'https://picsum.photos/seed/video4/320/180',
+    channelTitle: 'GameDev Latam',
+    publishedAt: '2026-03-19T12:00:00Z',
+    isFavorite: false,
+  },
+  {
+    id: 'v5',
+    youtubeVideoId: 'ScMzIvxBSi4',
+    title: 'JWT Authentication: buenas prácticas de seguridad para 2026',
+    thumbnailUrl: 'https://picsum.photos/seed/video5/320/180',
+    channelTitle: 'SecureCode',
+    publishedAt: '2026-05-30T09:45:00Z',
+    isFavorite: true,
+  },
+  {
+    id: 'v6',
+    youtubeVideoId: '9bZkp7q19f0',
+    title: 'Clean Architecture aplicada a proyectos reales con .NET',
+    thumbnailUrl: 'https://picsum.photos/seed/video6/320/180',
+    channelTitle: 'Arquitectura de Software',
+    publishedAt: '2026-02-10T18:20:00Z',
+    isFavorite: false,
+  },
+];

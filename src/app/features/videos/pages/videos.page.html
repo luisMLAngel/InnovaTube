@@ -1,0 +1,11 @@
+<div class="p-8">
+  <div>
+    <app-compact-search
+      [placeholder]="'Buscar videos...'"
+      (search)="onSearch($event)"
+    ></app-compact-search>
+  </div>
+  <div class="mt-8">
+    <app-video-list></app-video-list>
+  </div>
+</div>

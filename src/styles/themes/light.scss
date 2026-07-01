@@ -1,0 +1,590 @@
+:root[data-theme="light"] {
+    /* ===================== */
+    /* Brand */
+    /* ===================== */
+
+    --color-primary: #9333ea;
+    /* Elegant purple-pink SaaS primary */
+    --color-primary-hover: #7e22ce;
+    --color-primary-active: #6b21a8;
+    --color-primary-soft: color-mix(in srgb, var(--color-primary) 12%, white);
+
+    --color-accent: #fc427b;
+    /* Your bold pink accent */
+    --color-accent-hover: #fb7185;
+    --color-accent-soft: color-mix(in srgb, var(--color-accent) 14%, white);
+
+    /* ===================== */
+    /* Text */
+    /* ===================== */
+
+    --text-primary: #111827;
+    --text-secondary: #374151;
+    --text-muted: #6b7280;
+    --text-disabled: #9ca3af;
+    --text-inverse: #ffffff;
+
+    /* ===================== */
+    /* Backgrounds */
+    /* ===================== */
+
+    --bg-app: #f9fafb;
+    --bg-surface: #ffffff;
+    --bg-card: #ffffff;
+    --bg-muted: #f3f4f6;
+    --bg-hover: #f3f4f6;
+    --bg-selected: #e5e7eb;
+    --bg-overlay: rgba(17, 24, 39, 0.55);
+    --bg-theme: #ffffff;
+    --bg-auth: radial-gradient(circle at -2% -2%, rgba(147, 51, 234, 0.18), transparent 26%),
+        radial-gradient(circle at 106% 106%, rgba(147, 51, 234, 0.14), transparent 34%),
+        linear-gradient(135deg, #f7f8fd 0%, #eef1fa 50%, #f5f7fd 100%);
+
+    /* Inputs */
+    --bg-input: #ffffff;
+    --bg-input-hover: #f9fafb;
+    --bg-input-focus: #ffffff;
+    --bg-input-disabled: #f3f4f6;
+
+    /* Buttons */
+    --bg-button-primary: var(--color-primary);
+    --bg-button-primary-hover: var(--color-primary-hover);
+    --bg-button-primary-active: var(--color-primary-active);
+
+    --bg-button-secondary: #ffffff;
+    --bg-button-secondary-hover: #f9fafb;
+    --bg-button-secondary-active: #f3f4f6;
+
+    --bg-button-ghost-hover: #f3f4f6;
+    --bg-button-danger: #dc2626;
+    --bg-button-danger-hover: #b91c1c;
+
+    /* ===================== */
+    /* Borders & Dividers */
+    /* ===================== */
+
+    --border-default: #e5e7eb;
+    --border-strong: #d1d5db;
+    --border-divider: #e5e7eb;
+
+    /* Inputs */
+    --input-border: var(--border-default);
+    --input-border-hover: #d1d5db;
+    --input-border-focus: var(--color-primary);
+    --input-border-error: #dc2626;
+    --input-border-disabled: #e5e7eb;
+
+    /* Buttons */
+    --button-border-secondary: var(--border-default);
+    --button-border-secondary-hover: #d1d5db;
+    --button-border-danger: #dc2626;
+
+    /* ===================== */
+    /* States */
+    /* ===================== */
+
+    --color-error: #dc2626;
+    --color-success: #16a34a;
+    --color-warning: #d97706;
+    --color-info: #2563eb;
+
+    --state-error-bg-soft: color-mix(in srgb, var(--color-error) 12%, white);
+    --state-success-bg-soft: color-mix(in srgb, var(--color-success) 12%, white);
+    --state-warning-bg-soft: color-mix(in srgb, var(--color-warning) 12%, white);
+    --state-info-bg-soft: color-mix(in srgb, var(--color-info) 12%, white);
+
+    /* ===================== */
+    /* Inputs */
+    /* ===================== */
+
+    --input-bg: var(--bg-input);
+    --input-bg-hover: var(--bg-input-hover);
+    --input-bg-focus: var(--bg-input-focus);
+    --input-bg-disabled: var(--bg-input-disabled);
+
+    --input-text: var(--text-primary);
+    --input-placeholder: var(--text-muted);
+    --input-disabled-text: #9ca3af;
+
+    --input-ring-focus: color-mix(in srgb, var(--color-primary) 25%, transparent);
+    --input-ring-error: color-mix(in srgb, var(--color-error) 25%, transparent);
+
+    /* ===================== */
+    /* Buttons */
+    /* ===================== */
+
+    --button-primary-bg: var(--bg-button-primary);
+    --button-primary-bg-hover: var(--bg-button-primary-hover);
+    --button-primary-bg-active: var(--bg-button-primary-active);
+    --button-primary-text: #ffffff;
+
+    --button-secondary-bg: var(--bg-button-secondary);
+    --button-secondary-bg-hover: var(--bg-button-secondary-hover);
+    --button-secondary-bg-active: var(--bg-button-secondary-active);
+    --button-secondary-text: var(--text-primary);
+
+    --button-ghost-bg-hover: var(--bg-button-ghost-hover);
+    --button-ghost-text: var(--text-primary);
+
+    --button-danger-bg: var(--bg-button-danger);
+    --button-danger-bg-hover: var(--bg-button-danger-hover);
+    --button-danger-text: #ffffff;
+
+    --button-disabled-bg: #e5e7eb;
+    --button-disabled-text: #9ca3af;
+
+    /* ===================== */
+    /* Focus & Rings */
+    /* ===================== */
+
+    --focus-ring-primary: var(--input-ring-focus);
+    --focus-ring-danger: var(--input-ring-error);
+
+    /* ===================== */
+    /* Overlays */
+    /* ===================== */
+
+    --overlay-bg: rgba(17, 24, 39, 0.55);
+    --overlay-surface: #ffffff;
+
+    /* ===================== */
+    /* Shadows (minimal, Linear-style) */
+    /* ===================== */
+
+    --shadow-sm: 0 0 10px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 0 15px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 0 20px rgba(0, 0, 0, 0.14);
+
+    /* ===================== */
+    /* Links */
+    /* ===================== */
+
+    --link-text: var(--color-primary);
+    --link-hover: var(--color-primary-hover);
+    --link-active: var(--color-primary-active);
+    --link-visited: color-mix(in srgb, var(--color-primary) 75%, black);
+    --link-muted: var(--text-secondary);
+    --link-underline: color-mix(in srgb, var(--color-primary) 35%, transparent);
+
+    /* ========================================
+       PRIMENG COLOR TOKENS MAPPING
+       ======================================== */
+
+    /* -------------------- BUTTONS -------------------- */
+
+    /* Button - Primary */
+    --p-button-primary-background: var(--button-primary-bg);
+    --p-button-primary-hover-background: var(--button-primary-bg-hover);
+    --p-button-primary-active-background: var(--button-primary-bg-active);
+    --p-button-primary-color: var(--button-primary-text);
+    --p-button-primary-hover-color: var(--button-primary-text);
+    --p-button-primary-border-color: var(--button-primary-bg);
+    --p-button-primary-hover-border-color: var(--button-primary-bg-hover);
+
+    /* Button - Secondary */
+    --p-button-secondary-background: var(--button-secondary-bg);
+    --p-button-secondary-hover-background: var(--button-secondary-bg-hover);
+    --p-button-secondary-active-background: var(--button-secondary-bg-active);
+    --p-button-secondary-color: var(--button-secondary-text);
+    --p-button-secondary-hover-color: var(--button-secondary-text);
+    --p-button-secondary-border-color: var(--button-border-secondary);
+    --p-button-secondary-hover-border-color: var(--button-border-secondary-hover);
+
+    /* Button - Text/Ghost */
+    --p-button-text-color: var(--button-ghost-text);
+    --p-button-text-hover-background: var(--button-ghost-bg-hover);
+    --p-button-text-hover-color: var(--button-ghost-text);
+
+    /* Button - Danger */
+    --p-button-danger-background: var(--button-danger-bg);
+    --p-button-danger-hover-background: var(--button-danger-bg-hover);
+    --p-button-danger-color: var(--button-danger-text);
+    --p-button-danger-border-color: var(--button-border-danger);
+
+    /* Button - Disabled */
+    --p-button-disabled-background: var(--button-disabled-bg);
+    --p-button-disabled-color: var(--button-disabled-text);
+    --p-button-disabled-border-color: var(--border-default);
+
+    /* Button - Focus */
+    --p-button-focus-ring: var(--focus-ring-primary);
+
+    /* Split Button */
+    --p-splitbutton-background: var(--button-primary-bg);
+    --p-splitbutton-hover-background: var(--button-primary-bg-hover);
+    --p-splitbutton-color: var(--button-primary-text);
+    --p-splitbutton-border-color: var(--button-primary-bg);
+
+    /* Speed Dial */
+    --p-speeddial-button-background: var(--button-primary-bg);
+    --p-speeddial-button-hover-background: var(--button-primary-bg-hover);
+    --p-speeddial-button-color: var(--button-primary-text);
+    --p-speeddial-action-background: var(--bg-surface);
+    --p-speeddial-action-hover-background: var(--bg-hover);
+    --p-speeddial-action-color: var(--text-primary);
+
+    /* -------------------- FORM CONTROLS -------------------- */
+
+    /* Input Text */
+    --p-inputtext-background: var(--input-bg);
+    --p-inputtext-hover-background: var(--input-bg-hover);
+    --p-inputtext-focus-background: var(--input-bg-focus);
+    --p-inputtext-disabled-background: var(--input-bg-disabled);
+    --p-inputtext-color: var(--input-text);
+    --p-inputtext-disabled-color: var(--input-disabled-text);
+    --p-inputtext-placeholder-color: var(--input-placeholder);
+    --p-inputtext-border-color: var(--input-border);
+    --p-inputtext-hover-border-color: var(--input-border-hover);
+    --p-inputtext-focus-border-color: var(--input-border-focus);
+    --p-inputtext-invalid-border-color: var(--input-border-error);
+    --p-inputtext-disabled-border-color: var(--input-border-disabled);
+    --p-inputtext-focus-ring: var(--input-ring-focus);
+    --p-inputtext-invalid-focus-ring: var(--input-ring-error);
+    --p-inputtext-shadow: var(--shadow-sm);
+
+    /* Password */
+    --p-password-background: var(--input-bg);
+    --p-password-hover-background: var(--input-bg-hover);
+    --p-password-focus-background: var(--input-bg-focus);
+    --p-password-disabled-background: var(--input-bg-disabled);
+    --p-password-color: var(--input-text);
+    --p-password-placeholder-color: var(--input-placeholder);
+    --p-password-border-color: var(--input-border);
+    --p-password-hover-border-color: var(--input-border-hover);
+    --p-password-focus-border-color: var(--input-border-focus);
+    --p-password-invalid-border-color: var(--input-border-error);
+    --p-password-focus-ring: var(--input-ring-focus);
+    --p-password-meter-weak-background: var(--color-error);
+    --p-password-meter-medium-background: var(--color-warning);
+    --p-password-meter-strong-background: var(--color-success);
+
+    /* Textarea */
+    --p-textarea-background: var(--input-bg);
+    --p-textarea-hover-background: var(--input-bg-hover);
+    --p-textarea-focus-background: var(--input-bg-focus);
+    --p-textarea-disabled-background: var(--input-bg-disabled);
+    --p-textarea-color: var(--input-text);
+    --p-textarea-placeholder-color: var(--input-placeholder);
+    --p-textarea-border-color: var(--input-border);
+    --p-textarea-hover-border-color: var(--input-border-hover);
+    --p-textarea-focus-border-color: var(--input-border-focus);
+    --p-textarea-invalid-border-color: var(--input-border-error);
+    --p-textarea-focus-ring: var(--input-ring-focus);
+
+    /* Checkbox */
+    --p-checkbox-background: var(--input-bg);
+    --p-checkbox-hover-background: var(--input-bg-hover);
+    --p-checkbox-checked-background: var(--color-primary);
+    --p-checkbox-checked-hover-background: var(--color-primary-hover);
+    --p-checkbox-disabled-background: var(--input-bg-disabled);
+    --p-checkbox-border-color: var(--input-border);
+    --p-checkbox-hover-border-color: var(--input-border-hover);
+    --p-checkbox-checked-border-color: var(--color-primary);
+    --p-checkbox-invalid-border-color: var(--input-border-error);
+    --p-checkbox-disabled-border-color: var(--input-border-disabled);
+    --p-checkbox-icon-color: var(--text-inverse);
+    --p-checkbox-icon-disabled-color: var(--input-disabled-text);
+    --p-checkbox-focus-ring: var(--focus-ring-primary);
+
+    /* Radio Button */
+    --p-radiobutton-background: var(--input-bg);
+    --p-radiobutton-hover-background: var(--input-bg-hover);
+    --p-radiobutton-checked-background: var(--color-primary);
+    --p-radiobutton-checked-hover-background: var(--color-primary-hover);
+    --p-radiobutton-disabled-background: var(--input-bg-disabled);
+    --p-radiobutton-border-color: var(--input-border);
+    --p-radiobutton-hover-border-color: var(--input-border-hover);
+    --p-radiobutton-checked-border-color: var(--color-primary);
+    --p-radiobutton-invalid-border-color: var(--input-border-error);
+    --p-radiobutton-disabled-border-color: var(--input-border-disabled);
+    --p-radiobutton-icon-color: var(--text-inverse);
+    --p-radiobutton-icon-disabled-color: var(--input-disabled-text);
+    --p-radiobutton-focus-ring: var(--focus-ring-primary);
+
+    /* Select / Dropdown */
+    --p-select-background: var(--input-bg);
+    --p-select-hover-background: var(--input-bg-hover);
+    --p-select-focus-background: var(--input-bg-focus);
+    --p-select-disabled-background: var(--input-bg-disabled);
+    --p-select-color: var(--input-text);
+    --p-select-placeholder-color: var(--input-placeholder);
+    --p-select-disabled-color: var(--input-disabled-text);
+    --p-select-border-color: var(--input-border);
+    --p-select-hover-border-color: var(--input-border-hover);
+    --p-select-focus-border-color: var(--input-border-focus);
+    --p-select-invalid-border-color: var(--input-border-error);
+    --p-select-focus-ring: var(--input-ring-focus);
+    --p-select-overlay-background: var(--overlay-surface);
+    --p-select-overlay-border-color: var(--border-default);
+    --p-select-overlay-shadow: var(--shadow-lg);
+    --p-select-option-color: var(--text-primary);
+    --p-select-option-hover-background: var(--bg-hover);
+    --p-select-option-hover-color: var(--text-primary);
+    --p-select-option-selected-background: var(--color-primary-soft);
+    --p-select-option-selected-color: var(--color-primary);
+    --p-select-option-selected-hover-background: color-mix(in srgb, var(--color-primary) 18%, white);
+    --p-select-option-focus-background: var(--bg-hover);
+
+    /* Dropdown */
+    --p-dropdown-background: var(--input-bg);
+    --p-dropdown-hover-background: var(--input-bg-hover);
+    --p-dropdown-focus-background: var(--input-bg-focus);
+    --p-dropdown-disabled-background: var(--input-bg-disabled);
+    --p-dropdown-color: var(--input-text);
+    --p-dropdown-placeholder-color: var(--input-placeholder);
+    --p-dropdown-border-color: var(--input-border);
+    --p-dropdown-hover-border-color: var(--input-border-hover);
+    --p-dropdown-focus-border-color: var(--input-border-focus);
+    --p-dropdown-invalid-border-color: var(--input-border-error);
+    --p-dropdown-focus-ring: var(--input-ring-focus);
+    --p-dropdown-overlay-background: var(--overlay-surface);
+    --p-dropdown-overlay-border-color: var(--border-default);
+    --p-dropdown-overlay-shadow: var(--shadow-lg);
+    --p-dropdown-option-color: var(--text-primary);
+    --p-dropdown-option-hover-background: var(--bg-hover);
+    --p-dropdown-option-selected-background: var(--color-primary-soft);
+    --p-dropdown-option-selected-color: var(--color-primary);
+
+    /* MultiSelect */
+    --p-multiselect-background: var(--input-bg);
+    --p-multiselect-hover-background: var(--input-bg-hover);
+    --p-multiselect-focus-background: var(--input-bg-focus);
+    --p-multiselect-disabled-background: var(--input-bg-disabled);
+    --p-multiselect-color: var(--input-text);
+    --p-multiselect-placeholder-color: var(--input-placeholder);
+    --p-multiselect-border-color: var(--input-border);
+    --p-multiselect-hover-border-color: var(--input-border-hover);
+    --p-multiselect-focus-border-color: var(--input-border-focus);
+    --p-multiselect-invalid-border-color: var(--input-border-error);
+    --p-multiselect-focus-ring: var(--input-ring-focus);
+    --p-multiselect-overlay-background: var(--overlay-surface);
+    --p-multiselect-overlay-border-color: var(--border-default);
+    --p-multiselect-overlay-shadow: var(--shadow-lg);
+    --p-multiselect-option-color: var(--text-primary);
+    --p-multiselect-option-hover-background: var(--bg-hover);
+    --p-multiselect-option-selected-background: var(--color-primary-soft);
+    --p-multiselect-option-selected-color: var(--color-primary);
+    --p-multiselect-chip-background: var(--color-primary-soft);
+    --p-multiselect-chip-color: var(--color-primary);
+
+    /* TreeSelect */
+    --p-treeselect-background: var(--input-bg);
+    --p-treeselect-hover-background: var(--input-bg-hover);
+    --p-treeselect-focus-background: var(--input-bg-focus);
+    --p-treeselect-disabled-background: var(--input-bg-disabled);
+    --p-treeselect-color: var(--input-text);
+    --p-treeselect-placeholder-color: var(--input-placeholder);
+    --p-treeselect-border-color: var(--input-border);
+    --p-treeselect-hover-border-color: var(--input-border-hover);
+    --p-treeselect-focus-border-color: var(--input-border-focus);
+    --p-treeselect-invalid-border-color: var(--input-border-error);
+    --p-treeselect-focus-ring: var(--input-ring-focus);
+    --p-treeselect-overlay-background: var(--overlay-surface);
+    --p-treeselect-overlay-border-color: var(--border-default);
+    --p-treeselect-overlay-shadow: var(--shadow-lg);
+    --p-treeselect-option-color: var(--text-primary);
+    --p-treeselect-option-hover-background: var(--bg-hover);
+    --p-treeselect-option-selected-background: var(--color-primary-soft);
+    --p-treeselect-option-selected-color: var(--color-primary);
+
+    /* DatePicker / Calendar */
+    --p-datepicker-background: var(--input-bg);
+    --p-datepicker-hover-background: var(--input-bg-hover);
+    --p-datepicker-focus-background: var(--input-bg-focus);
+    --p-datepicker-disabled-background: var(--input-bg-disabled);
+    --p-datepicker-color: var(--input-text);
+    --p-datepicker-placeholder-color: var(--input-placeholder);
+    --p-datepicker-border-color: var(--input-border);
+    --p-datepicker-hover-border-color: var(--input-border-hover);
+    --p-datepicker-focus-border-color: var(--input-border-focus);
+    --p-datepicker-invalid-border-color: var(--input-border-error);
+    --p-datepicker-focus-ring: var(--input-ring-focus);
+    --p-datepicker-overlay-background: var(--overlay-surface);
+    --p-datepicker-overlay-border-color: var(--border-default);
+    --p-datepicker-overlay-shadow: var(--shadow-lg);
+    --p-datepicker-title-color: var(--text-primary);
+    --p-datepicker-header-background: var(--bg-muted);
+    --p-datepicker-header-color: var(--text-primary);
+    --p-datepicker-header-hover-color: var(--color-primary);
+    --p-datepicker-date-color: var(--text-primary);
+    --p-datepicker-date-hover-background: var(--bg-hover);
+    --p-datepicker-date-selected-background: var(--color-primary);
+    --p-datepicker-date-selected-color: var(--text-inverse);
+    --p-datepicker-date-today-background: var(--color-primary-soft);
+    --p-datepicker-date-today-color: var(--color-primary);
+    --p-datepicker-date-disabled-color: var(--text-disabled);
+
+    /* InputNumber */
+    --p-inputnumber-background: var(--input-bg);
+    --p-inputnumber-hover-background: var(--input-bg-hover);
+    --p-inputnumber-focus-background: var(--input-bg-focus);
+    --p-inputnumber-disabled-background: var(--input-bg-disabled);
+    --p-inputnumber-color: var(--input-text);
+    --p-inputnumber-placeholder-color: var(--input-placeholder);
+    --p-inputnumber-border-color: var(--input-border);
+    --p-inputnumber-hover-border-color: var(--input-border-hover);
+    --p-inputnumber-focus-border-color: var(--input-border-focus);
+    --p-inputnumber-invalid-border-color: var(--input-border-error);
+    --p-inputnumber-focus-ring: var(--input-ring-focus);
+    --p-inputnumber-button-background: var(--bg-muted);
+    --p-inputnumber-button-hover-background: var(--bg-hover);
+    --p-inputnumber-button-color: var(--text-primary);
+    --p-inputnumber-button-border-color: var(--border-default);
+
+    /* Slider */
+    --p-slider-track-background: var(--bg-muted);
+    --p-slider-range-background: var(--color-primary);
+    --p-slider-handle-background: var(--bg-surface);
+    --p-slider-handle-hover-background: var(--bg-surface);
+    --p-slider-handle-border-color: var(--color-primary);
+    --p-slider-handle-hover-border-color: var(--color-primary-hover);
+    --p-slider-handle-shadow: var(--shadow-sm);
+    --p-slider-focus-ring: var(--focus-ring-primary);
+
+    /* ToggleButton */
+    --p-togglebutton-background: var(--bg-surface);
+    --p-togglebutton-hover-background: var(--bg-hover);
+    --p-togglebutton-checked-background: var(--color-primary);
+    --p-togglebutton-checked-hover-background: var(--color-primary-hover);
+    --p-togglebutton-color: var(--text-primary);
+    --p-togglebutton-checked-color: var(--text-inverse);
+    --p-togglebutton-border-color: var(--border-default);
+    --p-togglebutton-hover-border-color: var(--border-strong);
+    --p-togglebutton-checked-border-color: var(--color-primary);
+    --p-togglebutton-invalid-border-color: var(--input-border-error);
+    --p-togglebutton-focus-ring: var(--focus-ring-primary);
+
+    /* ToggleSwitch / InputSwitch */
+    --p-inputswitch-background: var(--bg-muted);
+    --p-inputswitch-hover-background: var(--bg-hover);
+    --p-inputswitch-checked-background: var(--color-primary);
+    --p-inputswitch-checked-hover-background: var(--color-primary-hover);
+    --p-inputswitch-border-color: var(--border-default);
+    --p-inputswitch-checked-border-color: var(--color-primary);
+    --p-inputswitch-handle-background: var(--bg-surface);
+    --p-inputswitch-handle-checked-background: var(--text-inverse);
+    --p-inputswitch-invalid-border-color: var(--input-border-error);
+    --p-inputswitch-focus-ring: var(--focus-ring-primary);
+
+    /* SelectButton */
+    --p-selectbutton-background: var(--bg-surface);
+    --p-selectbutton-hover-background: var(--bg-hover);
+    --p-selectbutton-checked-background: var(--color-primary);
+    --p-selectbutton-checked-hover-background: var(--color-primary-hover);
+    --p-selectbutton-color: var(--text-primary);
+    --p-selectbutton-checked-color: var(--text-inverse);
+    --p-selectbutton-border-color: var(--border-default);
+    --p-selectbutton-checked-border-color: var(--color-primary);
+    --p-selectbutton-invalid-border-color: var(--input-border-error);
+    --p-selectbutton-focus-ring: var(--focus-ring-primary);
+
+    /* Autocomplete */
+    --p-autocomplete-dropdown-border-color: var(--border-default);
+    --p-autocomplete-option-selected-focus-background: var(--bg-selected);
+    --p-autocomplete-option-selected-color: var(--color-primary);
+
+    --p-autocomplete-option-selected-background: var(--color-primary-soft);
+
+    /* -------------------- TOOLTIP -------------------- */
+
+    --p-tooltip-background: var(--text-primary);
+    --p-tooltip-color: var(--text-inverse);
+    --p-tooltip-shadow: var(--shadow-md);
+
+    /* -------------------- PAGINATOR -------------------- */
+
+    --p-paginator-background: var(--bg-surface);
+    --p-paginator-color: var(--text-primary);
+    --p-paginator-border-color: var(--border-default);
+    --p-paginator-element-background: transparent;
+    --p-paginator-element-hover-background: var(--bg-hover);
+    --p-paginator-element-color: var(--text-primary);
+    --p-paginator-element-hover-color: var(--text-primary);
+    --p-paginator-element-border-color: transparent;
+    --p-paginator-element-selected-background: var(--color-primary);
+    --p-paginator-element-selected-color: var(--text-inverse);
+    --p-paginator-element-selected-border-color: var(--color-primary);
+    --p-paginator-element-focus-ring: var(--focus-ring-primary);
+
+    /* -------------------- TABLE / DATATABLE -------------------- */
+
+    --p-datatable-background: var(--bg-surface);
+    --p-datatable-color: var(--text-primary);
+    --p-datatable-border-color: var(--border-default);
+    --p-datatable-header-background: var(--bg-muted);
+    --p-datatable-header-color: var(--text-secondary);
+    --p-datatable-header-border-color: var(--border-default);
+    --p-datatable-header-cell-hover-background: var(--bg-hover);
+    --p-datatable-header-cell-selected-background: var(--color-primary-soft);
+    --p-datatable-body-cell-color: var(--text-primary);
+    --p-datatable-body-cell-border-color: var(--border-default);
+    --p-datatable-row-background: var(--bg-surface);
+    --p-datatable-row-hover-background: var(--bg-hover);
+    --p-datatable-row-selected-background: var(--color-primary-soft);
+    --p-datatable-row-selected-color: var(--color-primary);
+    --p-datatable-row-stripe-background: color-mix(in srgb, var(--bg-muted) 30%, transparent);
+    --p-datatable-footer-background: var(--bg-muted);
+    --p-datatable-footer-color: var(--text-secondary);
+    --p-datatable-footer-border-color: var(--border-default);
+    --p-datatable-resizer-color: var(--border-default);
+    --p-datatable-focus-ring: var(--focus-ring-primary);
+
+    /* -------------------- TIMELINE -------------------- */
+
+    --p-timeline-event-color: var(--text-primary);
+    --p-timeline-event-marker-background: var(--bg-surface);
+    --p-timeline-event-marker-border-color: var(--color-primary);
+    --p-timeline-event-connector-color: var(--border-default);
+    --p-timeline-horizontal-event-content-background: var(--bg-card);
+    --p-timeline-horizontal-event-content-border-color: var(--border-default);
+
+    /* -------------------- BREADCRUMB -------------------- */
+    --p-breadcrumb-background: var(--bg-app);
+    --p-breadcrumb-item-color: var(--text-secondary);
+    --p-breadcrumb-item-hover-color: var(--color-primary);
+    --p-breadcrumb-separator-color: var(--text-disabled);
+
+    /* -------------------- PANEL -------------------- */
+
+    /* Panel */
+    --p-panel-background: var(--bg-card);
+    --p-panel-border-color: var(--border-default);
+    --p-panel-color: var(--text-primary);
+    --p-panel-header-background: transparent;
+    --p-panel-header-color: var(--text-primary);
+    --p-panel-header-border-color: var(--border-default);
+    --p-panel-header-border-width: 0;
+    --p-panel-title-color: var(--text-primary);
+
+    /* -------------------- TAG -------------------- */
+    /* Neutral → PENDING */
+    --tag-tone-neutral-bg: #f3f4f6;
+    --tag-tone-neutral-text: #374151;
+    --tag-tone-neutral-border: #e5e7eb;
+
+    /* Info → IN_PROGRESS */
+    --tag-tone-info-bg: #eff6ff;
+    --tag-tone-info-text: #1d4ed8;
+    --tag-tone-info-border: #bfdbfe;
+
+    /* Danger → CLOSED */
+    --tag-tone-danger-bg: #fef2f2;
+    --tag-tone-danger-text: #b91c1c;
+    --tag-tone-danger-border: #fecaca;
+
+    /* Success → COMPLETED */
+    --tag-tone-success-bg: #ecfdf5;
+    --tag-tone-success-text: #047857;
+    --tag-tone-success-border: #a7f3d0;
+
+    /* -------------------- PRIORITY -------------------- */
+    --priority-none-bar: #9ca3af;
+
+    --priority-low-bar: #e5e7eb;
+    --priority-medium-bar: #3b82f6;
+    --priority-high-bar: #f59e0b;
+    --priority-critical-bar: #ef4444;
+
+    --priority-bar-inactive: #9ca3af;
+
+}

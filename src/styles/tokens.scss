@@ -1,0 +1,320 @@
+:root {
+   /* Spacing */
+
+   /* micro ajustes */
+   --space-1: 4px;
+   /* relación directa */
+   --space-2: 8px;
+   /* grupos */
+   --space-3: 12px;
+   /* estándar */
+   --space-4: 16px;
+   /* bloques */
+   --space-6: 24px;
+   /* secciones */
+   --space-8: 32px;
+   /* layout */
+   --space-10: 40px;
+
+   /* Font sizes */
+
+   /* 12px */
+   --text-xs: 0.75rem;
+
+   /* 14px */
+   --text-sm: 0.875rem;
+
+   /* 16px */
+   --text-base: 1rem;
+
+   /* 18px */
+   --text-md: 1.125rem;
+
+   /* 20px */
+   --text-lg: 1.25rem;
+
+   /* 24px */
+   --text-xl: 1.5rem;
+
+   /* 30px */
+   --text-2xl: 1.875rem;
+
+   /* 36px */
+   --text-3xl: 2.25rem;
+
+
+
+   /* Line heights */
+
+   /* 20px */
+   --lh-tight: 1.25;
+   /* 24px */
+   --lh-normal: 1.5;
+
+   /* elementos sin redondeo */
+   --radius-none: 0px;
+   /* separadores, chips pequeños */
+   --radius-xs: 2px;
+   /* inputs, botones pequeños */
+   --radius-sm: 4px;
+   /* botones default, selects */
+   --radius-md: 6px;
+   /* cards, panels */
+   --radius-lg: 8px;
+   /* modals, drawers */
+   --radius-xl: 12px;
+   /* full */
+   --radius-full: 9999px;
+
+   /* Control heights */
+
+   /* ultra compacto */
+   --control-height-xs: 28px;
+   /* compacto */
+   --control-height-sm: 32px;
+   /* default */
+   --control-height-md: 40px;
+   /* cómodo / destacado */
+   --control-height-lg: 48px;
+
+   --control-padding-x-sm: 10px;
+   --control-padding-x-md: 12px;
+   --control-padding-x-lg: 16px;
+   --control-padding-y-sm: 6px;
+   --control-padding-y-md: 8px;
+   --control-padding-y-lg: 10px;
+
+   --control-text-sm: 13px;
+   --control-text-md: 14px;
+   --control-text-lg: 15px;
+
+   // SIDEBAR
+   --sidebar-width: 260px;
+   --sidebar-width-collapsed: 72px;
+   --header-height: 52px;
+   --footer-height: 38px;
+
+   // BUTTONS
+   --button-padding-x: 8px;
+   --button-padding-y: 6px;
+   --button-font-size: 14px;
+   --button-border-radius: 6px;
+   --button-icon-size: 14px;
+   --button-gap: 4px;
+   --button-sm-padding-x: 6px;
+   --button-sm-padding-y: 3px;
+   --button-sm-font-size: 13px;
+   --button-sm-icon-size: 13px;
+   --button-lg-padding-x: 10px;
+   --button-lg-padding-y: 8px;
+   --button-lg-font-size: 15px;
+   --button-lg-icon-size: 15px;
+
+   /* ========================================
+      PRIMENG DESIGN TOKENS MAPPING
+      ======================================== */
+
+   /* -------------------- BUTTONS -------------------- */
+
+   /* Button */
+   --p-button-border-radius: var(--button-border-radius);
+   --p-button-padding-x: var(--button-padding-x);
+   --p-button-padding-y: var(--button-padding-y);
+   --p-button-icon-size: var(--button-icon-size);
+   --p-button-font-size: var(--button-font-size);
+   --p-button-gap: var(--button-gap);
+
+   --p-button-sm-padding-x: var(--button-sm-padding-x);
+   --p-button-sm-padding-y: var(--button-sm-padding-y);
+   --p-button-sm-icon-only-width: var(--button-sm-icon-size);
+   --p-button-sm-font-size: var(--button-sm-font-size);
+
+   --p-button-lg-padding-x: var(--button-lg-padding-x);
+   --p-button-lg-padding-y: var(--button-lg-padding-y);
+   --p-button-lg-font-size: var(--button-lg-font-size);
+   --p-button-lg-icon-only-width: var(--button-lg-icon-size);
+   --p-button-font-size: var(--button-font-size);
+   --p-button-icon-only-width: var(--button-icon-size);
+
+   /* Split Button */
+   --p-splitbutton-border-radius: var(--radius-md);
+
+   /* Speed Dial */
+   --p-speeddial-button-border-radius: var(--radius-full);
+   --p-speeddial-action-border-radius: var(--radius-full);
+
+   /* -------------------- FORM CONTROLS -------------------- */
+
+   /* Input Text */
+   --p-inputtext-border-radius: var(--radius-md);
+   --p-inputtext-padding-x: var(--control-padding-x-md);
+   --p-inputtext-padding-y: var(--control-padding-y-md);
+   --p-inputtext-sm-padding-x: var(--control-padding-x-sm);
+   --p-inputtext-sm-padding-y: var(--control-padding-y-sm);
+   --p-inputtext-lg-padding-x: var(--control-padding-x-lg);
+   --p-inputtext-lg-padding-y: var(--control-padding-y-lg);
+   --p-inputtext-font-size: var(--control-text-md);
+   --p-inputtext-sm-font-size: var(--control-text-sm);
+   --p-inputtext-lg-font-size: var(--control-text-lg);
+
+   /* Password */
+   --p-password-border-radius: var(--radius-md);
+   --p-password-padding-x: var(--control-padding-x-md);
+   --p-password-padding-y: var(--control-padding-y-md);
+   --p-password-font-size: var(--control-text-md);
+   --p-password-meter-height: 4px;
+   --p-password-meter-border-radius: var(--radius-sm);
+
+   /* Checkbox */
+   --p-checkbox-width: 18px;
+   --p-checkbox-height: 18px;
+   --p-checkbox-border-radius: var(--radius-sm);
+   --p-checkbox-gap: var(--space-2);
+
+   /* Radio Button */
+   --p-radiobutton-width: 20px;
+   --p-radiobutton-height: 20px;
+   --p-radiobutton-border-radius: var(--radius-full);
+   --p-radiobutton-gap: var(--space-2);
+
+   /* Select / Dropdown */
+   --p-select-border-radius: var(--radius-md);
+   --p-select-padding-x: var(--control-padding-x-md);
+   --p-select-padding-y: var(--control-padding-y-md);
+   --p-select-font-size: var(--control-text-md);
+   --p-select-sm-padding-x: var(--control-padding-x-sm);
+   --p-select-sm-padding-y: var(--control-padding-y-sm);
+   --p-select-sm-font-size: var(--control-text-sm);
+   --p-select-lg-padding-x: var(--control-padding-x-lg);
+   --p-select-lg-padding-y: var(--control-padding-y-lg);
+   --p-select-lg-font-size: var(--control-text-lg);
+   --p-select-overlay-border-radius: var(--radius-lg);
+
+   /* Dropdown */
+   --p-dropdown-border-radius: var(--radius-md);
+   --p-dropdown-padding-x: var(--control-padding-x-md);
+   --p-dropdown-padding-y: var(--control-padding-y-md);
+   --p-dropdown-font-size: var(--control-text-md);
+   --p-dropdown-overlay-border-radius: var(--radius-lg);
+
+   /* MultiSelect */
+   --p-multiselect-border-radius: var(--radius-md);
+   --p-multiselect-padding-x: var(--control-padding-x-md);
+   --p-multiselect-padding-y: var(--control-padding-y-md);
+   --p-multiselect-font-size: var(--control-text-md);
+   --p-multiselect-overlay-border-radius: var(--radius-lg);
+   --p-multiselect-chip-border-radius: var(--radius-xs);
+
+   /* TreeSelect */
+   --p-treeselect-border-radius: var(--radius-md);
+   --p-treeselect-padding-x: var(--control-padding-x-md);
+   --p-treeselect-padding-y: var(--control-padding-y-md);
+   --p-treeselect-font-size: var(--control-text-md);
+   --p-treeselect-overlay-border-radius: var(--radius-lg);
+
+   /* DatePicker / Calendar */
+   --p-datepicker-border-radius: var(--radius-md);
+   --p-datepicker-padding-x: var(--control-padding-x-md);
+   --p-datepicker-padding-y: var(--control-padding-y-md);
+   --p-datepicker-font-size: var(--control-text-md);
+   --p-datepicker-overlay-border-radius: var(--radius-lg);
+   --p-datepicker-title-gap: var(--space-2);
+   --p-datepicker-header-padding: var(--space-4);
+   --p-datepicker-cell-padding: var(--space-1);
+
+   /* InputNumber */
+   --p-inputnumber-border-radius: var(--radius-md);
+   --p-inputnumber-padding-x: var(--control-padding-x-md);
+   --p-inputnumber-padding-y: var(--control-padding-y-md);
+   --p-inputnumber-font-size: var(--control-text-md);
+   --p-inputnumber-button-width: var(--control-height-md);
+
+   /* Slider */
+   --p-slider-handle-width: 20px;
+   --p-slider-handle-height: 20px;
+   --p-slider-handle-border-radius: var(--radius-full);
+   --p-slider-track-height: 6px;
+   --p-slider-track-border-radius: var(--radius-full);
+
+   /* ToggleButton */
+   --p-togglebutton-border-radius: var(--radius-md);
+   --p-togglebutton-padding-x: var(--control-padding-x-md);
+   --p-togglebutton-padding-y: var(--control-padding-y-md);
+   --p-togglebutton-font-size: var(--control-text-md);
+   --p-togglebutton-gap: var(--space-2);
+
+   /* ToggleSwitch / InputSwitch */
+   --p-inputswitch-width: 44px;
+   --p-inputswitch-height: 24px;
+   --p-inputswitch-border-radius: var(--radius-full);
+   --p-inputswitch-handle-size: 18px;
+   --p-inputswitch-gap: var(--space-2);
+
+   /* SelectButton */
+   --p-selectbutton-border-radius: var(--radius-md);
+   --p-selectbutton-padding-x: var(--control-padding-x-md);
+   --p-selectbutton-padding-y: var(--control-padding-y-md);
+   --p-selectbutton-font-size: var(--control-text-md);
+
+   /* Textarea */
+   --p-textarea-border-radius: var(--radius-md);
+   --p-textarea-padding-x: var(--control-padding-x-md);
+   --p-textarea-padding-y: var(--control-padding-y-md);
+   --p-textarea-font-size: var(--control-text-md);
+
+   /* -------------------- TOOLTIP -------------------- */
+
+   --p-tooltip-border-radius: var(--radius-sm);
+   --p-tooltip-padding-x: var(--space-3);
+   --p-tooltip-padding-y: var(--space-2);
+   --p-tooltip-font-size: var(--text-sm);
+   --p-tooltip-max-width: 300px;
+
+   /* -------------------- PAGINATOR -------------------- */
+
+   --p-paginator-padding-x: var(--space-4);
+   --p-paginator-padding-y: var(--space-3);
+   --p-paginator-gap: var(--space-2);
+   --p-paginator-element-width: var(--control-height-sm);
+   --p-paginator-element-height: var(--control-height-sm);
+   --p-paginator-element-border-radius: var(--radius-md);
+   --p-paginator-font-size: var(--text-sm);
+
+   /* -------------------- TABLE / DATATABLE -------------------- */
+
+   --p-datatable-border-radius: var(--radius-lg);
+   --p-datatable-header-padding: var(--space-4);
+   --p-datatable-header-font-size: var(--text-sm);
+   --p-datatable-body-cell-padding: var(--space-3);
+   --p-datatable-font-size: var(--text-sm);
+   --p-datatable-footer-padding: var(--space-4);
+   --p-datatable-row-gap: 0px;
+   --p-datatable-resizer-width: 2px;
+
+   /* -------------------- TIMELINE -------------------- */
+
+   --p-timeline-event-min-height: 70px;
+   --p-timeline-event-marker-size: 20px;
+   --p-timeline-event-marker-border-radius: var(--radius-full);
+   --p-timeline-event-connector-size: 2px;
+   --p-timeline-event-content-gap: var(--space-4);
+   --p-timeline-event-opposite-gap: var(--space-4);
+
+   /* -------------------- PANEL -------------------- */
+
+   --p-panel-border-radius: var(--radius-lg);
+   --p-panel-header-padding: var(--space-4);
+   --p-panel-toggleable-header-padding: calc(var(--space-1) * 1.5) var(--space-4);
+   --p-panel-title-font-weight: 600;
+   --p-panel-content-padding: 0 var(--space-4) var(--space-4) var(--space-4);
+   --p-panel-footer-padding: 0 var(--space-4) var(--space-4) var(--space-4);
+
+   /* -------------------- SPLITTER -------------------- */
+   --p-splitter-handle-focus-ring-width: 5px;
+   --p-splitter-handle-size: 8px;
+   --p-splitter-handle-focus-ring-width: 1px;
+
+   /* -------------------- DIVIDER -------------------- */
+   --p-divider-horizontal-padding: 0;
+   --p-divider-horizontal-margin: 0;
+}

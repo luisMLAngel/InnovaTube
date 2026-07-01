@@ -1,0 +1,17 @@
+/* ----------------- MODAL OVERRIDES ----------------- */
+.p-drawer .p-drawer-content,
+.p-drawer .p-drawer-header,
+.p-drawer .p-drawer-footer {
+    @apply p-0;
+}
+
+/* ----------------- POPOVER OVERRIDES ----------------- */
+.p-popover-content {
+    @apply p-0;
+}
+
+
+/* ----------------- PAGINATOR OVERRIDES ----------------- */
+.p-paginator {
+    @apply justify-end;
+}
