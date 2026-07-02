@@ -1,6 +1,5 @@
 import { Component, ViewChild, inject, OnInit } from '@angular/core';
 import { Video } from '../interfaces/video.interface';
-import { YoutubeService } from '../services/youtube.service';
 import {
   CompactSearchComponent,
   SearchEvent,
@@ -11,52 +10,58 @@ import { MessageService } from 'primeng/api';
 import { HeaderPageComponent } from '../../../shared/components';
 
 @Component({
-  selector: 'app-videos',
+  selector: 'app-favorite-videos',
   templateUrl: './favorite-videos.page.html',
   imports: [CompactSearchComponent, VideoListComponent, HeaderPageComponent],
 })
 export class FavoriteVideosPage implements OnInit {
   @ViewChild('searchCmp') searchCmp!: CompactSearchComponent;
 
-  private readonly youtubeService = inject(YoutubeService);
   private readonly videoService = inject(VideoService);
-  protected readonly messageService: MessageService = inject(MessageService);
+  protected readonly messageService = inject(MessageService);
   videos: Video[] = [];
 
   ngOnInit(): void {
-    this.loadPopularVideos();
+    this.loadFavoriteVideos();
   }
 
   onSearch(event: SearchEvent): void {
-    this.youtubeService.searchVideos(event.query).subscribe({
-      next: videos => {
-        this.videos = videos;
-        this.searchCmp?.setSuccess(videos.length > 0);
-      },
-      error: () => {
-        this.searchCmp?.setError();
-      },
+    this.videoService.getFavoriteVideos(event.query).then(favorites => {
+      this.videos = favorites.map(f => ({
+        ...f.Video,
+        isFavorite: true,
+      }));
+      this.searchCmp?.setSuccess(this.videos.length > 0);
+    }).catch(() => {
+      this.searchCmp?.setError();
     });
   }
 
   onClear(): void {
-    this.loadPopularVideos();
+    this.loadFavoriteVideos();
   }
 
-  private loadPopularVideos(): void {
-    this.youtubeService.getPopularVideos().subscribe({
-      next: videos => {
-        this.videos = videos;
-      },
-      error: () => {
-        this.videos = [];
-      },
-    });
+  private async loadFavoriteVideos(): Promise<void> {
+    try {
+      const favorites = await this.videoService.getFavoriteVideos();
+      this.videos = favorites.map(f => ({
+        ...f.Video,
+        isFavorite: true,
+      }));
+    } catch {
+      this.videos = [];
+    }
   }
 
   async onToggledFavorite(video: Video): Promise<void> {
     try {
-      await this.videoService.markAsFavorite(video);
+      await this.videoService.markAsUnFavorite(video);
+      this.videos = this.videos.filter(v => v.youtubeVideoId !== video.youtubeVideoId);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Éxito',
+        detail: 'Video eliminado de favoritos',
+      });
     } catch (error) {
       this.messageService.add({
         severity: 'error',

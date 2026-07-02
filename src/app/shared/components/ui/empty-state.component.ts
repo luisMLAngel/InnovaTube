@@ -1,13 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  InputSignal,
-  Signal,
-  computed,
-  input,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, InputSignal, computed, input } from '@angular/core';
 import { Button } from 'primeng/button';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { tablerBug, tablerInboxOff, tablerSearchOff } from '@ng-icons/tabler-icons';

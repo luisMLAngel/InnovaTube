@@ -16,7 +16,7 @@ export class VideoService {
 
   async markAsFavorite(video: Video): Promise<void> {
     const user = this.userFacade.user;
-    if (!user) {
+    if (!user()) {
       throw new Error('No se encuentra información sobre el usuario');
     }
     const data: CreateFavoriteVideoInterface = {
@@ -35,9 +35,22 @@ export class VideoService {
     }
   }
 
+  async markAsUnFavorite(video: Video): Promise<void> {
+    const user = this.userFacade.user;
+    if (!user()) {
+      throw new Error('No se encuentra información sobre el usuario');
+    }
+    const response: DataBaseServiceResponse<void> = await firstValueFrom(
+      this.baseService.delete<void>(`${this.SERVER}/favorites/remove/${video.youtubeVideoId}`),
+    );
+    if (response.error) {
+      throw new Error(response.message);
+    }
+  }
+
   async getFavoriteVideos(search?: string): Promise<FavoriteVideo[]> {
     const user = this.userFacade.user;
-    if (!user) {
+    if (!user()) {
       throw new Error('No se encuentra información sobre el usuario');
     }
     const response: DataBaseServiceResponse<FavoriteVideo[]> = await firstValueFrom(

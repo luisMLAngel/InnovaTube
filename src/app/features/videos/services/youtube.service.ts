@@ -10,7 +10,7 @@ export class YoutubeService {
   private readonly http = inject(HttpClient);
   private readonly API_KEY = environment.YOUTUBE_API_KEY;
   private readonly BASE_URL = 'https://www.googleapis.com/youtube/v3';
-  private readonly MAX_RESULTS = 12;
+  private readonly MAX_RESULTS = 100;
 
   searchVideos(query: string): Observable<Video[]> {
     const params = {

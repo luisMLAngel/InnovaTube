@@ -178,6 +178,7 @@ export class CompactSearchComponent {
 
       if (!q) {
         this.status.set('idle');
+        this.cleared.emit();
         return;
       }
 

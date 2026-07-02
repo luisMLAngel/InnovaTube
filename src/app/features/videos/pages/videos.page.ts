@@ -21,6 +21,7 @@ export class VideosPage implements OnInit {
   private readonly youtubeService = inject(YoutubeService);
   private readonly videoService = inject(VideoService);
   protected readonly messageService: MessageService = inject(MessageService);
+
   videos: Video[] = [];
 
   ngOnInit(): void {
@@ -29,9 +30,9 @@ export class VideosPage implements OnInit {
 
   onSearch(event: SearchEvent): void {
     this.youtubeService.searchVideos(event.query).subscribe({
-      next: videos => {
-        this.videos = videos;
-        this.searchCmp?.setSuccess(videos.length > 0);
+      next: async videos => {
+        this.videos = await this.markFavoritesIfExist(videos);
+        this.searchCmp?.setSuccess(this.videos.length > 0);
       },
       error: () => {
         this.searchCmp?.setError();
@@ -43,20 +44,35 @@ export class VideosPage implements OnInit {
     this.loadPopularVideos();
   }
 
-  private loadPopularVideos(): void {
-    this.youtubeService.getPopularVideos().subscribe({
-      next: videos => {
-        this.videos = videos;
-      },
-      error: () => {
-        this.videos = [];
-      },
-    });
+  private async loadPopularVideos(): Promise<void> {
+    try {
+      const videos = await this.youtubeService.getPopularVideos().toPromise();
+      this.videos = await this.markFavoritesIfExist(videos ?? []);
+    } catch {
+      this.videos = [];
+    }
+  }
+
+  private async markFavoritesIfExist(videos: Video[]): Promise<Video[]> {
+    try {
+      const favorites = await this.videoService.getFavoriteVideos();
+      const favoriteIds = new Set(favorites.map(f => f.Video.youtubeVideoId));
+      return videos.map(video => ({
+        ...video,
+        isFavorite: favoriteIds.has(video.youtubeVideoId),
+      }));
+    } catch {
+      return videos;
+    }
   }
 
   async onToggledFavorite(video: Video): Promise<void> {
     try {
-      await this.videoService.markAsFavorite(video);
+      if (video.isFavorite) {
+        await this.videoService.markAsUnFavorite(video);
+      } else {
+        await this.videoService.markAsFavorite(video);
+      }
     } catch (error) {
       this.messageService.add({
         severity: 'error',
