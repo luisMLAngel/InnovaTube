@@ -1,9 +1,15 @@
 import { inject, Injectable } from '@angular/core';
-import { AuthResponseInterface, CreateUserDto, UserCredentialsInterface } from '../interfaces';
+import {
+  AuthForgotPasswordInterface,
+  AuthResponseInterface,
+  CreateUserDto,
+  UserCredentialsInterface,
+} from '../interfaces';
 import { AuthRepository } from '../states';
 import { AuthService } from './auth.service';
 import { StorageService } from '../../../core/services';
 import { UserRepository } from '../../user/states';
+import { ForgotPasswordResponse, LoginResponse, RegisterResponse } from '../forms';
 @Injectable({ providedIn: 'root' })
 export class AuthFacadeService {
   private readonly authService = inject(AuthService);
@@ -14,21 +20,29 @@ export class AuthFacadeService {
   user = this.authState.user;
   constructor() {}
 
-  async login(credentials: UserCredentialsInterface): Promise<void> {
+  async login(credentials: LoginResponse): Promise<void> {
     const response: AuthResponseInterface | null = await this.authService.login(credentials);
     this.setAccessToken(response?.accessToken || null);
     this.setRefreshToken(response?.refreshToken || null);
     this.userState.setUser(response?.user || null);
   }
 
-  async registerUser(data: CreateUserDto): Promise<void> {
-    const accessToken: string | null = await this.authService.registerUser(data);
-    this.setAccessToken(accessToken);
+  async registerUser(data: RegisterResponse): Promise<void> {
+    console.log('REGISTER DATA', data);
+    const response: AuthResponseInterface | null = await this.authService.registerUser(data);
+    this.setAccessToken(response?.accessToken || null);
+    this.setRefreshToken(response?.refreshToken || null);
+    this.userState.setUser(response?.user || null);
   }
 
   async refreshToken(): Promise<void> {
     const accessToken: string | null = await this.authService.refreshToken();
     this.setAccessToken(accessToken);
+  }
+
+  async forgotPassword(data: ForgotPasswordResponse): Promise<AuthForgotPasswordInterface> {
+    const { email } = data;
+    return await this.authService.forgotPassword(email);
   }
 
   async logout(): Promise<void> {

@@ -13,6 +13,8 @@ import { Divider } from 'primeng/divider';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ThemeService, type Theme } from '../../services/theme.service';
 import { Avatar } from 'primeng/avatar';
+import { AuthFacadeService } from '../../../features/auth/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile-section',
@@ -76,6 +78,7 @@ import { Avatar } from 'primeng/avatar';
           <div>
             <div
               class="flex items-center gap-2 cursor-pointer hover:bg-selected-w transition-colors p-2 mb-2 mx-2 rounded"
+              (click)="logout()"
             >
               <ng-icon name="tablerLogout2" class="!text-error-w text-lg"></ng-icon>
               <p class="text-ink-primary-w text-base">Cerrar sesión</p>
@@ -91,6 +94,8 @@ import { Avatar } from 'primeng/avatar';
 })
 export class UserProfileSectionComponent {
   private readonly themeService = inject(ThemeService);
+  private readonly authFacadeService = inject(AuthFacadeService);
+  private readonly router = inject(Router);
 
   userName: InputSignal<string> = input<string>('No definido');
   userAvatarUrl: InputSignal<string> = input<string>('');
@@ -119,5 +124,10 @@ export class UserProfileSectionComponent {
    */
   protected onThemeChange(theme: Theme): void {
     this.themeService.setTheme(theme);
+  }
+
+  protected async logout(): Promise<void> {
+    this.authFacadeService.logout();
+    await this.router.navigate(['/login']);
   }
 }

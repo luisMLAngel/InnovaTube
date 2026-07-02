@@ -43,7 +43,7 @@ export class RegisterFormService extends FormBase<
   toResponseForCreate(): RegisterResponse {
     const formValue = this._form.value;
     return {
-      name: formValue.name ?? '',
+      firstName: formValue.name ?? '',
       lastName: formValue.lastname ?? '',
       email: formValue.email ?? '',
       password: formValue.password ?? '',

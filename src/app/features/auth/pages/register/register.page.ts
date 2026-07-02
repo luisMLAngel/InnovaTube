@@ -7,7 +7,8 @@ import { PasswordModule } from 'primeng/password';
 import { FormErrorDirective } from '../../../../shared/directives/control-error.directive';
 import { PasswordFeedbackComponent } from '../../components';
 import { AuthFacadeService, RegisterFormService } from '../../services';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register-page',
@@ -22,11 +23,13 @@ import { Router } from '@angular/router';
     ButtonModule,
     PasswordFeedbackComponent,
     FormErrorDirective,
+    RouterLink,
   ],
   providers: [],
 })
 export class RegisterPage {
   // Services
+  protected readonly messageService: MessageService = inject(MessageService);
   protected readonly formService: RegisterFormService = inject(RegisterFormService);
   private readonly authFacadeService = inject(AuthFacadeService);
   private readonly router = inject(Router);
@@ -34,9 +37,18 @@ export class RegisterPage {
   constructor() {}
 
   async onRegister(): Promise<void> {
-    this.formService.validateFormAndThrow();
+    try {
+      this.formService.validateFormAndThrow();
+    } catch (error) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: (error as Error).message,
+      });
+      return;
+    }
     const registerData = this.formService.toResponseForCreate();
     await this.authFacadeService.registerUser(registerData);
-    await this.router.navigate(['auth', 'organization']);
+    await this.router.navigate(['videos']);
   }
 }

@@ -26,6 +26,10 @@ export interface AuthMeInterface {
   accessToken: string;
 }
 
+export interface AuthForgotPasswordInterface {
+  resetToken: string;
+}
+
 /**
  * ════════════════════════════════════════════════════════════════
  * TIPOS DERIVADOS - DTOs

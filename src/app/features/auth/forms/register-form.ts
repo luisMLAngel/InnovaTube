@@ -15,7 +15,7 @@ export type RegisterPopulateForm = {
 };
 
 export type RegisterResponse = {
-  name: string;
+  firstName: string;
   lastName: string;
   email: string;
   password: string;

@@ -8,9 +8,10 @@ import { PasswordModule } from 'primeng/password';
 import { FormErrorDirective } from '../../../../shared/directives/control-error.directive';
 import { AuthFacadeService, LoginFormService } from '../../services';
 import { Router, RouterLink } from '@angular/router';
+import { ForgotPasswordFormService } from '../../services/forgot-password-form.service';
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login.page.html',
+  selector: 'app-reset-password-page',
+  templateUrl: './reset-password.page.html',
   styles: [],
   imports: [
     CommonModule,
@@ -24,16 +25,16 @@ import { Router, RouterLink } from '@angular/router';
   ],
   providers: [],
 })
-export class LoginPage implements OnDestroy {
+export class ResetPasswordPage implements OnDestroy {
   // Services
-  protected readonly formService: LoginFormService = inject(LoginFormService);
+  protected readonly formService: ForgotPasswordFormService = inject(ForgotPasswordFormService);
   protected readonly messageService: MessageService = inject(MessageService);
   private readonly authFacadeService = inject(AuthFacadeService);
   private readonly router = inject(Router);
 
   constructor() {}
 
-  async onLogin(): Promise<void> {
+  async onForgotPassword(): Promise<void> {
     try {
       this.formService.validateFormAndThrow();
     } catch (error) {
@@ -44,9 +45,10 @@ export class LoginPage implements OnDestroy {
       });
       return;
     }
-    const loginData = this.formService.toResponseForCreate();
+    const forgotPasswordData = this.formService.toResponseForCreate();
     try {
-      await this.authFacadeService.login(loginData);
+      const { resetToken } = await this.authFacadeService.forgotPassword(forgotPasswordData);
+      console.log('se pondra el token en la url', resetToken);
       await this.router.navigate(['/videos']);
     } catch (error) {
       this.messageService.add({
