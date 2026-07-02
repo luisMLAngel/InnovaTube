@@ -8,6 +8,8 @@ import {
   AuthForgotPasswordInterface,
   AuthResponseInterface,
   CreateUserDto,
+  ResetPasswordRequestInterface,
+  ResetPasswordResponseInterface,
   UserCredentialsInterface,
 } from '../interfaces';
 import { LoginResponse, RegisterResponse } from '../forms';
@@ -66,6 +68,21 @@ export class AuthService {
       this.baseService.post<AuthForgotPasswordInterface>(
         `${this.SERVER}/auth/forgot-password`,
         { email },
+        void 0,
+        { withCredentials: true },
+      ),
+    );
+    if (response.error) {
+      throw this.errorHandlerService.createRequestException(response.serverResponse);
+    }
+    return response.entity!;
+  }
+
+  async resetPassword(data: ResetPasswordRequestInterface): Promise<ResetPasswordResponseInterface> {
+    const response: DataBaseServiceResponse<ResetPasswordResponseInterface> = await firstValueFrom(
+      this.baseService.post<ResetPasswordResponseInterface>(
+        `${this.SERVER}/auth/reset-password`,
+        data,
         void 0,
         { withCredentials: true },
       ),

@@ -3,6 +3,8 @@ import {
   AuthForgotPasswordInterface,
   AuthResponseInterface,
   CreateUserDto,
+  ResetPasswordRequestInterface,
+  ResetPasswordResponseInterface,
   UserCredentialsInterface,
 } from '../interfaces';
 import { AuthRepository } from '../states';
@@ -43,6 +45,10 @@ export class AuthFacadeService {
   async forgotPassword(data: ForgotPasswordResponse): Promise<AuthForgotPasswordInterface> {
     const { email } = data;
     return await this.authService.forgotPassword(email);
+  }
+
+  async resetPassword(data: ResetPasswordRequestInterface): Promise<ResetPasswordResponseInterface> {
+    return await this.authService.resetPassword(data);
   }
 
   async logout(): Promise<void> {

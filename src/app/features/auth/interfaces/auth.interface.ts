@@ -30,6 +30,17 @@ export interface AuthForgotPasswordInterface {
   resetToken: string;
 }
 
+/** Payload para restablecer contraseña */
+export interface ResetPasswordRequestInterface {
+  token: string;
+  newPassword: string;
+}
+
+/** Response de restablecer contraseña */
+export interface ResetPasswordResponseInterface {
+  success: boolean;
+}
+
 /**
  * ════════════════════════════════════════════════════════════════
  * TIPOS DERIVADOS - DTOs
