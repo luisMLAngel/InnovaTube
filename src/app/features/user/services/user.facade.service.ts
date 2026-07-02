@@ -16,7 +16,6 @@ export class UserFacadeService {
 
   async me(): Promise<void> {
     const data = await this.userService.me();
-    console.log('EL METODO ME', data);
     this.userState.setUser(data);
   }
 }

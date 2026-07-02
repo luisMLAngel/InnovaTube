@@ -24,14 +24,12 @@ export class AuthFacadeService {
 
   async login(credentials: LoginResponse): Promise<void> {
     const response: AuthResponseInterface | null = await this.authService.login(credentials);
-    console.log('RESPONSE', response);
     this.setAccessToken(response?.accessToken || null);
     this.setRefreshToken(response?.refreshToken || null);
     this.userState.setUser(response?.user || null);
   }
 
   async registerUser(data: RegisterResponse): Promise<void> {
-    console.log('REGISTER DATA', data);
     const response: AuthResponseInterface | null = await this.authService.registerUser(data);
     this.setAccessToken(response?.accessToken || null);
     this.setRefreshToken(response?.refreshToken || null);
@@ -55,14 +53,12 @@ export class AuthFacadeService {
   }
 
   async logout(): Promise<void> {
-    // limpiaras localstorage y va a matar la sesion en el backend
     this.setAccessToken(null);
     this.setRefreshToken(null);
     this.userState.setUser(null);
   }
 
   setAccessToken(token: string | null): void {
-    console.log('access token', token);
     this.storageService.setAccessToken(token);
   }
 

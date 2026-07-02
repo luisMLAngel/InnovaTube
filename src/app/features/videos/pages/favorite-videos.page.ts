@@ -26,15 +26,18 @@ export class FavoriteVideosPage implements OnInit {
   }
 
   onSearch(event: SearchEvent): void {
-    this.videoService.getFavoriteVideos(event.query).then(favorites => {
-      this.videos = favorites.map(f => ({
-        ...f.Video,
-        isFavorite: true,
-      }));
-      this.searchCmp?.setSuccess(this.videos.length > 0);
-    }).catch(() => {
-      this.searchCmp?.setError();
-    });
+    this.videoService
+      .getFavoriteVideos(event.query)
+      .then(favorites => {
+        this.videos = favorites.map(f => ({
+          ...f.Video,
+          isFavorite: true,
+        }));
+        this.searchCmp?.setSuccess(this.videos.length > 0);
+      })
+      .catch(() => {
+        this.searchCmp?.setError();
+      });
   }
 
   onClear(): void {
@@ -43,6 +46,7 @@ export class FavoriteVideosPage implements OnInit {
 
   private async loadFavoriteVideos(): Promise<void> {
     try {
+      console.log('obtener favoritos');
       const favorites = await this.videoService.getFavoriteVideos();
       this.videos = favorites.map(f => ({
         ...f.Video,

@@ -49,10 +49,6 @@ export class VideoService {
   }
 
   async getFavoriteVideos(search?: string): Promise<FavoriteVideo[]> {
-    const user = this.userFacade.user;
-    if (!user()) {
-      throw new Error('No se encuentra información sobre el usuario');
-    }
     const response: DataBaseServiceResponse<FavoriteVideo[]> = await firstValueFrom(
       this.baseService.get<FavoriteVideo[]>(`${this.SERVER}/favorites`, void 0, {
         params: { search },

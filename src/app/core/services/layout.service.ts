@@ -14,7 +14,6 @@ export class LayoutService {
 
   constructor(private breakpoint: BreakpointObserver) {
     this.breakpoint.observe([this.SIDEBAR_QUERY]).subscribe(result => {
-      console.log('Breakpoint Handset match:', result.matches);
       const sidebarPref = this.storageService.get<'collapse' | 'expand'>(
         StorageKeys.SIDEBAR_PREFERENCE,
       );

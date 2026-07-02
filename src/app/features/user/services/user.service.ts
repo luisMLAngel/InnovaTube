@@ -15,7 +15,6 @@ export class UserService {
     const response: DataBaseServiceResponse<UserInterface> = await firstValueFrom(
       this.baseService.get<UserInterface>(`${this.SERVER}/users/me`),
     );
-    console.log('RESPONSE', response.entity);
     if (response.error) {
       throw new Error(response.message);
     }

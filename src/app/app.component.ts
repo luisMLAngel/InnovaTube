@@ -3,7 +3,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-import { AuthFacadeService } from './features/auth/services';
 import { LoaderComponent } from './shared/components/loader.component';
 import { UserFacadeService } from './features/user/services';
 
@@ -17,23 +16,14 @@ import { UserFacadeService } from './features/user/services';
 export class AppComponent implements OnInit {
   title = 'innovatube-frontend';
 
-  private readonly authFacadeService = inject(AuthFacadeService);
   protected readonly userFacadeService = inject(UserFacadeService);
   private readonly router = inject(Router);
   constructor() {}
 
   ngOnInit(): void {
-    // this.authFacadeService.refreshToken().then(() => {
-    //   this.userFacadeService.me().then(() => {
-    //     // solo mandar a follow-ups cuando al ruta sea la raiz
-    //     if (this.router.url === '/') {
-    //       this.router.navigate(['/', 'o', 'follow-ups']);
-    //     }
-    //   });
-    // });
     this.userFacadeService.me().then(() => {
       if (this.router.url === '/') {
-        console.log('User:', this.userFacadeService.user());
+        this.router.navigate(['videos']);
       }
     });
   }

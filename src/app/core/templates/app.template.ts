@@ -146,12 +146,7 @@ export class AppTemplate implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      console.log('User:', this.userFacadeService.user());
-      console.log('AUTH:', this.authFacadeService.user());
-    }, 1000);
-  }
+  ngOnInit(): void {}
 
   /**
    * Acción del botón flotante - navega a crear nuevo según la ruta actual

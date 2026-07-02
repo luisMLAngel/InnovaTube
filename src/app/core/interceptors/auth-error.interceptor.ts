@@ -23,7 +23,6 @@ export function AuthErrorInterceptorFn(
       const currentPath = location.pathname;
       const isPublicRoute = EXCLUDE_PATHS.some(path => currentPath.includes(path));
       if (error.status === 409 && !isPublicRoute) {
-        console.log('Unauthorized request - logging out');
         authFacade.logout();
         router.navigate(['/auth/login']);
       }

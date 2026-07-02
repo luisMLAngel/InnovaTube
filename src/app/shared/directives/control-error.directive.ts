@@ -19,7 +19,6 @@ export const CONTROL_ERRORS: Record<string, (control: AbstractControl) => string
   email: (): string => 'Correo electrónico inválido',
   minlength: (control: AbstractControl): string => {
     const requiredLength = control.errors?.['minlength']?.['requiredLength'];
-    console.log('errores', control.errors);
     return `Mínimo ${requiredLength} caracteres`;
   },
   maxlength: (control: AbstractControl): string => {

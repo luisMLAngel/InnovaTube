@@ -12,11 +12,7 @@ export const userState = createStore({ name: 'user' }, withProps<UserState>({ us
 export class UserRepository {
   readonly user$ = userState.pipe(select(state => state.user));
 
-  constructor() {
-    this.user$.subscribe(user => {
-      console.log('UserRepository -> user$', user);
-    });
-  }
+  constructor() {}
 
   setUser(user: UserInterface | null): void {
     userState.update(setProp('user', user));

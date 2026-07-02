@@ -23,7 +23,6 @@ export class AuthRepository {
   }
 
   setUser(user: any): void {
-    console.log('AuthRepository -> setUser -> user', user);
     authState.update(state => ({ ...state, user }));
   }
 }
