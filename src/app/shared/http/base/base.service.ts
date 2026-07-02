@@ -67,7 +67,7 @@ export class BaseService {
       return {
         error: true,
         code: 400,
-        message: response.message,
+        message: (response as any).error?.message ?? '',
         entity: null,
         serverResponse: response,
       };

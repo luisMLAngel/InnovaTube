@@ -5,9 +5,9 @@ import { provideIcons } from '@ng-icons/core';
 import { tablerNote } from '@ng-icons/tabler-icons';
 import { Divider } from 'primeng/divider';
 import { AuthFacadeService } from '../../features/auth/services';
-import { UserFacadeService } from '../../features/user/services';
 import { SidebarMenuComponent } from '../components';
 import { LayoutService } from '../services';
+import { UserFacadeService } from '../../features/user/services';
 
 @Component({
   selector: 'app-app-template',
@@ -23,7 +23,6 @@ import { LayoutService } from '../services';
           <app-sidebar-menu [user]="userFacadeService.user()"></app-sidebar-menu>
         </aside>
 
-        <!-- Indicador visual cuando el sidebar está colapsado -->
         @if (!layoutService.sidebarLayoutState()) {
           <div
             class="sidebar-collapsed-indicator"
@@ -34,13 +33,11 @@ import { LayoutService } from '../services';
           </div>
         }
 
-        <!-- Main Content Panel -->
         <main class="app-main-wrapper">
           <div class="app-page-container">
             <router-outlet></router-outlet>
           </div>
 
-          <!-- Footer Global -->
           <footer class="app-footer-global">
             <p-divider></p-divider>
             <div class="flex items-center justify-end p-1.5">
@@ -142,7 +139,7 @@ import { LayoutService } from '../services';
   providers: [provideIcons({ tablerNote })],
 })
 export class AppTemplate implements OnInit {
-  private readonly authFacadeService = inject(AuthFacadeService);
+  protected readonly authFacadeService = inject(AuthFacadeService);
   protected readonly userFacadeService = inject(UserFacadeService);
   protected readonly layoutService = inject(LayoutService);
   private readonly router = inject(Router);
@@ -150,9 +147,10 @@ export class AppTemplate implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // this.authFacadeService.refreshToken().then(() => {
-    //   this.userFacadeService.me().then();
-    // });
+    setTimeout(() => {
+      console.log('User:', this.userFacadeService.user());
+      console.log('AUTH:', this.authFacadeService.user());
+    }, 1000);
   }
 
   /**

@@ -1,27 +1,24 @@
 import { inject, Injectable } from '@angular/core';
-import { AuthMeInterface, CreateUserDto, UserCredentialsInterface } from '../interfaces';
+import { AuthResponseInterface, CreateUserDto, UserCredentialsInterface } from '../interfaces';
 import { AuthRepository } from '../states';
 import { AuthService } from './auth.service';
+import { StorageService } from '../../../core/services';
+import { UserRepository } from '../../user/states';
 @Injectable({ providedIn: 'root' })
 export class AuthFacadeService {
   private readonly authService = inject(AuthService);
   private readonly authState = inject(AuthRepository);
+  private readonly userState = inject(UserRepository);
+  private readonly storageService = inject(StorageService);
 
-  user = this.authState.user; // Signal<UserInterface | null>
-  organization = this.authState.organization; // Signal<OrganizationInterface | null>
+  user = this.authState.user;
   constructor() {}
 
   async login(credentials: UserCredentialsInterface): Promise<void> {
-    const accessToken: string | null = await this.authService.login(credentials);
-    this.setAccessToken(accessToken);
-  }
-
-  async selectOrganization(organizationId: string): Promise<void> {
-    const { accessToken, user, organization }: AuthMeInterface =
-      await this.authService.selectOrganization(organizationId);
-    this.setAccessToken(accessToken);
-    this.authState.setUser(user);
-    this.authState.setOrganization(organization);
+    const response: AuthResponseInterface | null = await this.authService.login(credentials);
+    this.setAccessToken(response?.accessToken || null);
+    this.setRefreshToken(response?.refreshToken || null);
+    this.userState.setUser(response?.user || null);
   }
 
   async registerUser(data: CreateUserDto): Promise<void> {
@@ -36,17 +33,28 @@ export class AuthFacadeService {
 
   async logout(): Promise<void> {
     // limpiaras localstorage y va a matar la sesion en el backend
+    this.setAccessToken(null);
+    this.setRefreshToken(null);
+    this.userState.setUser(null);
   }
 
   setAccessToken(token: string | null): void {
-    this.authService.accessTokenSubject.next(token);
+    this.storageService.setAccessToken(token);
+  }
+
+  setRefreshToken(token: string | null): void {
+    this.storageService.setRefreshToken(token);
   }
 
   isAuthenticated(): boolean {
-    return !!this.authService.accessTokenSubject.value;
+    return !!this.storageService.getAccessToken();
   }
 
   getAccessToken(): string | null {
-    return this.authService.accessTokenSubject.value;
+    return this.storageService.getAccessToken();
+  }
+
+  getRefreshToken(): string | null {
+    return this.storageService.getRefreshToken();
   }
 }

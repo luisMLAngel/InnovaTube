@@ -9,6 +9,7 @@ import { inject } from '@angular/core';
 import { BehaviorSubject, catchError, filter, Observable, switchMap, take, throwError } from 'rxjs';
 import { AuthFacadeService } from '../../features/auth/services';
 import { environment } from '../../environments';
+import { StorageService } from '../services';
 
 let isRefreshing = false;
 const refreshSubject = new BehaviorSubject<string | null>(null);
@@ -19,18 +20,18 @@ export function AuthInterceptorFn(
 ): Observable<HttpEvent<unknown>> {
   const authFacade = inject(AuthFacadeService);
   const http = inject(HttpClient);
+  const storage = inject(StorageService);
 
   const excludeUrls = ['/auth/login', '/users/register', '/auth/refresh-token'];
-
   const isExcluded = excludeUrls.some(url => req.url.includes(url));
 
-  const accessToken = authFacade.getAccessToken();
+  const accessToken = storage.getAccessToken();
   const authReq = accessToken && !isExcluded ? addTokenHeader(req, accessToken) : req;
 
   return next(authReq).pipe(
     catchError(err => {
       if (err instanceof HttpErrorResponse && err.status === 401 && !isExcluded) {
-        return handle401Error(authReq, next, authFacade, http);
+        return handle401Error(authReq, next, authFacade, http, storage);
       }
       return throwError(() => err);
     }),
@@ -42,7 +43,6 @@ function addTokenHeader(request: HttpRequest<any>, token: string): HttpRequest<a
     setHeaders: {
       Authorization: `Bearer ${token}`,
     },
-    withCredentials: true,
   });
 }
 
@@ -51,23 +51,39 @@ function handle401Error(
   next: HttpHandlerFn,
   authFacade: AuthFacadeService,
   http: HttpClient,
+  storage: StorageService,
 ): Observable<HttpEvent<any>> {
   const SERVER = environment.SERVER;
+
   if (!isRefreshing) {
     isRefreshing = true;
     refreshSubject.next(null);
 
-    return http.post<any>(`${SERVER}/auth/refresh-token`, null, { withCredentials: true }).pipe(
+    const refreshToken = storage.getRefreshToken();
+
+    if (!refreshToken) {
+      isRefreshing = false;
+      authFacade.logout();
+      return throwError(() => new Error('No refresh token available'));
+    }
+
+    return http.post<any>(`${SERVER}/auth/refresh-token`, { refreshToken }).pipe(
       switchMap(res => {
         isRefreshing = false;
-        const token = res.accessToken;
-        authFacade.setAccessToken(token);
-        refreshSubject.next(token);
-        return next(addTokenHeader(request, token));
+        const { accessToken, refreshToken: newRefreshToken } = res;
+
+        storage.setAccessToken(accessToken);
+        storage.setRefreshToken(newRefreshToken);
+        authFacade.setAccessToken(accessToken);
+
+        refreshSubject.next(accessToken);
+        return next(addTokenHeader(request, accessToken));
       }),
       catchError(err => {
         isRefreshing = false;
+        storage.clear();
         authFacade.setAccessToken(null);
+        authFacade.logout();
         return throwError(() => err);
       }),
     );

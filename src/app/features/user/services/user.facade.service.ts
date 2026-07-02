@@ -7,18 +7,16 @@ import { UserService } from './user.service';
 @Injectable({ providedIn: 'root' })
 export class UserFacadeService {
   user: Signal<UserInterface | null>;
-  organization: Signal<OrganizationInterface | null>;
   constructor(
     private readonly userService: UserService,
     private readonly userState: UserRepository,
   ) {
     this.user = toSignal(this.userState.user$, { initialValue: null });
-    this.organization = toSignal(this.userState.organization$, { initialValue: null });
   }
 
   async me(): Promise<void> {
-    const { user, organization } = await this.userService.me();
-    this.userState.setUser(user);
-    this.userState.setOrganization(organization);
+    const data = await this.userService.me();
+    console.log('EL METODO ME', data);
+    this.userState.setUser(data);
   }
 }

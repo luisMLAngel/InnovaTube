@@ -15,6 +15,8 @@ export interface UserCredentialsInterface {
 /** Response de autenticación (token) */
 export interface AuthResponseInterface {
   accessToken: string;
+  refreshToken?: string;
+  user: UserInterface;
 }
 
 /** Datos del usuario autenticado con sus organizaciones */

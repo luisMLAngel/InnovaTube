@@ -9,6 +9,7 @@ export class ErrorHandlerService {
   constructor() {}
 
   createRequestException(httpErrorResponse: HttpErrorResponse): Error {
+    console.log('error en handler', httpErrorResponse);
     if (!navigator.onLine) return new Error('¡Sin Internet! Verifica tu conexión.');
 
     const message: string = (httpErrorResponse?.error?.message ?? '').toString().trim();

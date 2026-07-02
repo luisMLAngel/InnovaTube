@@ -33,9 +33,26 @@ export class LoginPage {
   constructor() {}
 
   async onLogin(): Promise<void> {
-    this.formService.validateFormAndThrow();
+    try {
+      this.formService.validateFormAndThrow();
+    } catch (error) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: (error as Error).message,
+      });
+      return;
+    }
     const loginData = this.formService.toResponseForCreate();
-    const user = await this.authFacadeService.login(loginData);
-    await this.router.navigate(['/auth/user-organization']);
+    try {
+      await this.authFacadeService.login(loginData);
+      await this.router.navigate(['/videos']);
+    } catch (error) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: (error as Error).message,
+      });
+    }
   }
 }

@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { MeInterface } from '../../../core/interfaces';
+import { MeInterface, UserInterface } from '../../../core/interfaces';
 import { environment } from '../../../environments';
 import { BaseService } from '../../../shared/http/base/base.service';
+import { DataBaseServiceResponse } from '../../../shared/http/base/interfaces/data-base-service-response.interface';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -10,11 +11,14 @@ export class UserService {
   private readonly baseService = inject(BaseService);
   constructor() {}
 
-  async me(): Promise<MeInterface> {
-    const response: MeInterface = await firstValueFrom(
-      this.baseService.getv2<MeInterface>(`${this.SERVER}/users/me`),
+  async me(): Promise<UserInterface> {
+    const response: DataBaseServiceResponse<UserInterface> = await firstValueFrom(
+      this.baseService.get<UserInterface>(`${this.SERVER}/users/me`),
     );
-
-    return response;
+    console.log('RESPONSE', response.entity);
+    if (response.error) {
+      throw new Error(response.message);
+    }
+    return response.entity!;
   }
 }

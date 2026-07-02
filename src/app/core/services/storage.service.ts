@@ -14,4 +14,33 @@ export class StorageService {
     const item = localStorage.getItem(key);
     return item ? (JSON.parse(item) as T) : null;
   }
+
+  setAccessToken(token: string | null): void {
+    if (token) {
+      this.set('ACCESS_TOKEN', token);
+    } else {
+      localStorage.removeItem('ACCESS_TOKEN');
+    }
+  }
+
+  getAccessToken(): string | null {
+    return this.get<string>('ACCESS_TOKEN');
+  }
+
+  setRefreshToken(token: string | null): void {
+    if (token) {
+      this.set('REFRESH_TOKEN', token);
+    } else {
+      localStorage.removeItem('REFRESH_TOKEN');
+    }
+  }
+
+  getRefreshToken(): string | null {
+    return this.get<string>('REFRESH_TOKEN');
+  }
+
+  clear(): void {
+    localStorage.removeItem('ACCESS_TOKEN');
+    localStorage.removeItem('REFRESH_TOKEN');
+  }
 }

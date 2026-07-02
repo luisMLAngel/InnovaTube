@@ -23,13 +23,18 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.authFacadeService.refreshToken().then(() => {
-      this.userFacadeService.me().then(() => {
-        // solo mandar a follow-ups cuando al ruta sea la raiz
-        if (this.router.url === '/') {
-          this.router.navigate(['/', 'o', 'follow-ups']);
-        }
-      });
+    // this.authFacadeService.refreshToken().then(() => {
+    //   this.userFacadeService.me().then(() => {
+    //     // solo mandar a follow-ups cuando al ruta sea la raiz
+    //     if (this.router.url === '/') {
+    //       this.router.navigate(['/', 'o', 'follow-ups']);
+    //     }
+    //   });
+    // });
+    this.userFacadeService.me().then(() => {
+      if (this.router.url === '/') {
+        console.log('User:', this.userFacadeService.user());
+      }
     });
   }
 }

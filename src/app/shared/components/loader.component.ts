@@ -20,7 +20,7 @@ export const EXCLUDE_HEADERS_SKIP_LOADER: string = 'X-Skip-Loader';
   styles: [
     `
       .loader {
-        @apply fixed top-0 left-0 w-full h-full flex items-center bg-surface-w justify-center z-50;
+        @apply fixed top-0 left-0 w-full h-full flex items-center bg-black/80 justify-center z-50;
       }
       .loader-container {
         display: flex;

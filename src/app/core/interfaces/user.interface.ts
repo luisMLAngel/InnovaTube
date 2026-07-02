@@ -2,7 +2,7 @@ import { OrganizationInterface } from './organization.interface';
 
 export interface UserInterface {
   id: string;
-  name: string;
+  firstName: string;
   lastName: string;
   email: string;
 }
