@@ -24,6 +24,7 @@ export class AuthFacadeService {
 
   async login(credentials: LoginResponse): Promise<void> {
     const response: AuthResponseInterface | null = await this.authService.login(credentials);
+    console.log('RESPONSE', response);
     this.setAccessToken(response?.accessToken || null);
     this.setRefreshToken(response?.refreshToken || null);
     this.userState.setUser(response?.user || null);
@@ -47,7 +48,9 @@ export class AuthFacadeService {
     return await this.authService.forgotPassword(email);
   }
 
-  async resetPassword(data: ResetPasswordRequestInterface): Promise<ResetPasswordResponseInterface> {
+  async resetPassword(
+    data: ResetPasswordRequestInterface,
+  ): Promise<ResetPasswordResponseInterface> {
     return await this.authService.resetPassword(data);
   }
 
@@ -59,6 +62,7 @@ export class AuthFacadeService {
   }
 
   setAccessToken(token: string | null): void {
+    console.log('access token', token);
     this.storageService.setAccessToken(token);
   }
 

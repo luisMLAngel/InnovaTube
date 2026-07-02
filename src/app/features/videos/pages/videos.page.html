@@ -1,11 +1,13 @@
 <div class="p-8">
   <div>
     <app-compact-search
+      #searchCmp
       [placeholder]="'Buscar videos...'"
       (search)="onSearch($event)"
+      (cleared)="onClear()"
     ></app-compact-search>
   </div>
   <div class="mt-8">
-    <app-video-list></app-video-list>
+    <app-video-list [videos]="videos"></app-video-list>
   </div>
 </div>
