@@ -22,7 +22,7 @@ export function AuthInterceptorFn(
   const http = inject(HttpClient);
   const storage = inject(StorageService);
 
-  const excludeUrls = ['/auth/login', '/users/register', '/auth/refresh-token'];
+  const excludeUrls = ['/auth/login', '/users/register', '/auth/refresh-token', 'googleapis.com'];
   const isExcluded = excludeUrls.some(url => req.url.includes(url));
 
   const accessToken = storage.getAccessToken();

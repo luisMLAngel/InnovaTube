@@ -42,8 +42,8 @@ export class YoutubeService {
 
   private mapToVideos(response: YouTubeSearchResponse): Video[] {
     return response.items.map(item => ({
-      id: item.id.videoId,
-      youtubeVideoId: item.id.videoId,
+      id: item.id,
+      youtubeVideoId: item.id,
       title: item.snippet.title,
       thumbnailUrl: item.snippet.thumbnails.high.url,
       channelTitle: item.snippet.channelTitle,

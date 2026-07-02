@@ -1,4 +1,4 @@
-import { Component, effect, input, signal } from '@angular/core';
+import { Component, effect, input, output, signal } from '@angular/core';
 import { VideoCardComponent } from './video-card.component';
 import { Video } from '../../features/videos/interfaces/video.interface';
 
@@ -17,7 +17,7 @@ export class VideoListComponent {
   videos = input.required<Video[]>();
 
   internalVideos = signal<Video[]>([]);
-
+  toggledFavorite = output<Video>();
   constructor() {
     effect(() => {
       this.internalVideos.set(this.videos());
@@ -28,5 +28,7 @@ export class VideoListComponent {
     this.internalVideos.update(list =>
       list.map(v => (v.id === video.id ? { ...v, isFavorite: !v.isFavorite } : v)),
     );
+    console.log('video', video);
+    this.toggledFavorite.emit(video);
   }
 }

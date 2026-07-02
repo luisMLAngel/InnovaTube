@@ -12,10 +12,10 @@ import { HeaderPageComponent } from '../../../shared/components';
 
 @Component({
   selector: 'app-videos',
-  templateUrl: './videos.page.html',
+  templateUrl: './favorite-videos.page.html',
   imports: [CompactSearchComponent, VideoListComponent, HeaderPageComponent],
 })
-export class VideosPage implements OnInit {
+export class FavoriteVideosPage implements OnInit {
   @ViewChild('searchCmp') searchCmp!: CompactSearchComponent;
 
   private readonly youtubeService = inject(YoutubeService);

@@ -15,7 +15,7 @@ export interface YouTubePageInfo {
 export interface YouTubeSearchItem {
   kind: string;
   etag: string;
-  id: YouTubeResourceId;
+  id: string;
   snippet: YouTubeSnippet;
 }
 

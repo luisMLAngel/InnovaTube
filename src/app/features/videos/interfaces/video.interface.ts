@@ -5,6 +5,24 @@ export interface Video {
   title: string;
   thumbnailUrl: string;
   channelTitle: string;
-  publishedAt: string; // ISO date
+  publishedAt: string;
   isFavorite: boolean;
+}
+
+export interface CreateFavoriteVideoInterface {
+  userId: string;
+  videoId?: string;
+  youtubeVideoId: string;
+  title: string;
+  thumbnailUrl: string;
+  channelTitle: string;
+  publishedAt: string;
+}
+
+export interface FavoriteVideo {
+  id: string;
+  userId: string;
+  videoId: string;
+  createdAt: Date;
+  Video: Video;
 }
