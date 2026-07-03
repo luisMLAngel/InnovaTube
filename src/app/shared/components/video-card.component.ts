@@ -1,6 +1,7 @@
 // video-card.component.ts
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { Video } from '../../features/videos/interfaces/video.interface';
 
 @Component({
@@ -11,6 +12,7 @@ import { Video } from '../../features/videos/interfaces/video.interface';
   template: `
     <article
       class="group flex flex-col overflow-hidden rounded-md bg-surface-w cursor-pointer transition-shadow hover:bg-panel-w"
+      (click)="onCardClick()"
     >
       <!-- Thumbnail -->
       <div class="relative aspect-video w-full overflow-hidden bg-gray-100">
@@ -70,8 +72,14 @@ import { Video } from '../../features/videos/interfaces/video.interface';
   `,
 })
 export class VideoCardComponent {
+  private readonly router = inject(Router);
+
   video = input.required<Video>();
   favoriteToggled = output<Video>();
+
+  onCardClick(): void {
+    this.router.navigate(['/videos', this.video().youtubeVideoId]);
+  }
 
   onToggleFavorite(event: Event): void {
     event.stopPropagation(); // evita que dispare click del card si tienes uno padre

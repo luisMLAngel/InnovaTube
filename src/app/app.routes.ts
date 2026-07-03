@@ -41,6 +41,14 @@ export const routes: Routes = [
           import('./features/videos/pages/favorite-videos.page').then(m => m.FavoriteVideosPage),
         data: { navId: 'main' },
       },
+      {
+        path: ':id',
+        loadComponent: () =>
+          import('./features/videos/pages/video-detail/video-detail.page').then(
+            m => m.VideoDetailPage,
+          ),
+        data: { navId: 'main' },
+      },
     ],
   },
   {
