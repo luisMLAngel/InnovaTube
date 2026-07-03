@@ -70,8 +70,18 @@ export class VideosPage implements OnInit {
     try {
       if (video.isFavorite) {
         await this.videoService.markAsUnFavorite(video);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Éxito',
+          detail: 'Video desmarcado como favorito',
+        });
       } else {
         await this.videoService.markAsFavorite(video);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Éxito',
+          detail: 'Video marcado como favorito',
+        });
       }
     } catch (error) {
       this.messageService.add({

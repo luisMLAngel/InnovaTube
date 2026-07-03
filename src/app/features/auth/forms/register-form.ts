@@ -5,6 +5,7 @@ export type RegisterFormGroup = {
   lastname: FormControl<string | null>;
   email: FormControl<string | null>;
   password: FormControl<string | null>;
+  confirmPassword: FormControl<string | null>;
 };
 
 export type RegisterPopulateForm = {
@@ -12,6 +13,7 @@ export type RegisterPopulateForm = {
   lastname: string;
   email: string;
   password: string;
+  confirmPassword: string;
 };
 
 export type RegisterResponse = {

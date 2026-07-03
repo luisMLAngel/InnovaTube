@@ -44,24 +44,7 @@ import { Router } from '@angular/router';
     <p-popover #op>
       <ng-template #content>
         <div class="min-w-[250px]">
-          <div>
-            <div
-              class="flex items-center gap-2 cursor-pointer hover:bg-selected-w transition-colors p-2 mb-0 mt-2 mx-2 rounded"
-            >
-              <ng-icon name="tablerSettings" class="!text-ink-primary-w text-lg"></ng-icon>
-              <p class="text-ink-primary-w text-base">Configuración</p>
-            </div>
-            <div
-              class="flex items-center gap-2 cursor-pointer hover:bg-selected-w transition-colors p-2 my-0 mx-2 rounded"
-            >
-              <ng-icon name="tablerHelpHexagon" class="!text-ink-primary-w text-lg"></ng-icon>
-              <p class="text-ink-primary-w text-base">Ayuda</p>
-            </div>
-          </div>
-
-          <p-divider class="my-2" />
-
-          <div class="px-2">
+          <div class="px-2 pt-2">
             <p-selectbutton
               [(ngModel)]="selectedTheme"
               [options]="themeOptions"

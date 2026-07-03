@@ -61,6 +61,20 @@
         </ng-template>
       </p-password>
     </div>
+    <div class="flex flex-col gap-1.5">
+      <label for="confirmPassword" class="text-sm text-ink-primary-w">Confirmar contraseña</label>
+      <p-password
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        variant="filled"
+        fluid
+        [toggleMask]="true"
+        autocomplete="off"
+        [feedback]="false"
+        errorMessage
+        [showErrors]="formService.showErrorSignal()"
+      />
+    </div>
     <p class="text-ink-muted-w text-xs">
       Estás a un paso de crear tu cuenta. Revisa que los datos sean correctos.
     </p>

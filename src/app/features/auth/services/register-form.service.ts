@@ -1,6 +1,6 @@
 import { Injectable, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { FormBase } from '../../../shared/interfaces';
 import { RegisterFormGroup, RegisterPopulateForm, RegisterResponse } from '../forms';
 
@@ -23,21 +23,47 @@ export class RegisterFormService extends FormBase<
   }
 
   createForm(): FormGroup<RegisterFormGroup> {
-    this._form = new FormGroup<RegisterFormGroup>({
-      name: new FormControl<string | null>(null, {
-        validators: [Validators.required],
-      }),
-      lastname: new FormControl<string | null>(null, {
-        validators: [Validators.required],
-      }),
-      email: new FormControl<string | null>(null, {
-        validators: [Validators.required, Validators.email],
-      }),
-      password: new FormControl<string | null>(null, {
-        validators: [Validators.required, Validators.minLength(8)],
-      }),
-    });
+    this._form = new FormGroup<RegisterFormGroup>(
+      {
+        name: new FormControl<string | null>(null, {
+          validators: [Validators.required],
+        }),
+        lastname: new FormControl<string | null>(null, {
+          validators: [Validators.required],
+        }),
+        email: new FormControl<string | null>(null, {
+          validators: [Validators.required, Validators.email],
+        }),
+        password: new FormControl<string | null>(null, {
+          validators: [Validators.required, Validators.minLength(8)],
+        }),
+        confirmPassword: new FormControl<string | null>(null, {
+          validators: [Validators.required, Validators.minLength(8)],
+        }),
+      },
+      { validators: this.passwordMatchValidator },
+    );
     return this._form;
+  }
+
+  private passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+
+    if (!password || !confirmPassword) {
+      return null;
+    }
+
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setErrors({ passwordMismatch: true });
+      return { passwordMismatch: true };
+    }
+
+    if (confirmPassword.hasError('passwordMismatch')) {
+      confirmPassword.setErrors(null);
+    }
+
+    return null;
   }
 
   toResponseForCreate(): RegisterResponse {
@@ -56,6 +82,7 @@ export class RegisterFormService extends FormBase<
       lastname: null,
       email: null,
       password: null,
+      confirmPassword: null,
     });
     this.setShowError(false);
   }
@@ -74,5 +101,9 @@ export class RegisterFormService extends FormBase<
 
   get passwordControl(): FormControl<string | null> {
     return this._form.get('password') as FormControl<string | null>;
+  }
+
+  get confirmPasswordControl(): FormControl<string | null> {
+    return this._form.get('confirmPassword') as FormControl<string | null>;
   }
 }
