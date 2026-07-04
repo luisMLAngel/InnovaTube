@@ -9,6 +9,8 @@ import { PasswordFeedbackComponent } from '../../components';
 import { AuthFacadeService, RegisterFormService } from '../../services';
 import { Router, RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { NgxCaptchaModule, ReCaptchaV3Service } from 'ngx-captcha';
+import { environment } from '../../../../environments';
 
 @Component({
   selector: 'app-register-page',
@@ -24,6 +26,7 @@ import { MessageService } from 'primeng/api';
     PasswordFeedbackComponent,
     FormErrorDirective,
     RouterLink,
+    NgxCaptchaModule,
   ],
   providers: [],
 })
@@ -33,6 +36,7 @@ export class RegisterPage {
   protected readonly formService: RegisterFormService = inject(RegisterFormService);
   private readonly authFacadeService = inject(AuthFacadeService);
   private readonly router = inject(Router);
+  private readonly recaptchaV3Service = inject(ReCaptchaV3Service);
 
   constructor() {}
 
@@ -47,8 +51,21 @@ export class RegisterPage {
       });
       return;
     }
-    const registerData = this.formService.toResponseForCreate();
-    await this.authFacadeService.registerUser(registerData);
-    await this.router.navigate(['videos']);
+
+    try {
+      const token = await this.recaptchaV3Service.executeAsPromise(
+        environment.RECAPTCHA_SITE_KEY,
+        'register',
+      );
+      const registerData = { ...this.formService.toResponseForCreate(), recaptchaToken: token };
+      await this.authFacadeService.registerUser(registerData);
+      await this.router.navigate(['videos']);
+    } catch (error) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: (error as Error).message,
+      });
+    }
   }
 }

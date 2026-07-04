@@ -21,4 +21,5 @@ export type RegisterResponse = {
   lastName: string;
   email: string;
   password: string;
+  recaptchaToken: string;
 };

@@ -78,7 +78,9 @@ export class AuthService {
     return response.entity!;
   }
 
-  async resetPassword(data: ResetPasswordRequestInterface): Promise<ResetPasswordResponseInterface> {
+  async resetPassword(
+    data: ResetPasswordRequestInterface,
+  ): Promise<ResetPasswordResponseInterface> {
     const response: DataBaseServiceResponse<ResetPasswordResponseInterface> = await firstValueFrom(
       this.baseService.post<ResetPasswordResponseInterface>(
         `${this.SERVER}/auth/reset-password`,

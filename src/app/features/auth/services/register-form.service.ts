@@ -1,6 +1,12 @@
 import { Injectable, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { FormBase } from '../../../shared/interfaces';
 import { RegisterFormGroup, RegisterPopulateForm, RegisterResponse } from '../forms';
 
@@ -8,7 +14,7 @@ import { RegisterFormGroup, RegisterPopulateForm, RegisterResponse } from '../fo
 export class RegisterFormService extends FormBase<
   RegisterFormGroup,
   RegisterPopulateForm,
-  RegisterResponse,
+  Omit<RegisterResponse, 'recaptchaToken'>,
   RegisterResponse
 > {
   _form: FormGroup<RegisterFormGroup>;
@@ -66,7 +72,7 @@ export class RegisterFormService extends FormBase<
     return null;
   }
 
-  toResponseForCreate(): RegisterResponse {
+  toResponseForCreate(): Omit<RegisterResponse, 'recaptchaToken'> {
     const formValue = this._form.value;
     return {
       firstName: formValue.name ?? '',
