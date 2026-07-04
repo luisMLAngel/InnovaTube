@@ -3,7 +3,6 @@ import { firstValueFrom } from 'rxjs';
 import { environment } from '../../../environments';
 import { BaseService } from '../../../shared/http/base/base.service';
 import { DataBaseServiceResponse } from '../../../shared/http/base/interfaces/data-base-service-response.interface';
-import { ErrorHandlerService } from '../../../shared/services';
 import {
   AuthForgotPasswordInterface,
   AuthResponseInterface,
@@ -18,10 +17,7 @@ import { LoginResponse, RegisterResponse } from '../forms';
 export class AuthService {
   private readonly SERVER: string = environment.SERVER;
 
-  constructor(
-    private readonly baseService: BaseService,
-    private readonly errorHandlerService: ErrorHandlerService,
-  ) {}
+  constructor(private readonly baseService: BaseService) {}
 
   async login(credentials: LoginResponse): Promise<AuthResponseInterface | null> {
     const response: DataBaseServiceResponse<AuthResponseInterface> = await firstValueFrom(
@@ -58,7 +54,7 @@ export class AuthService {
       ),
     );
     if (response.error) {
-      throw this.errorHandlerService.createRequestException(response.serverResponse);
+      throw new Error(response.message);
     }
     return response.entity?.accessToken || null;
   }
@@ -73,7 +69,7 @@ export class AuthService {
       ),
     );
     if (response.error) {
-      throw this.errorHandlerService.createRequestException(response.serverResponse);
+      throw new Error(response.message);
     }
     return response.entity!;
   }
@@ -90,7 +86,7 @@ export class AuthService {
       ),
     );
     if (response.error) {
-      throw this.errorHandlerService.createRequestException(response.serverResponse);
+      throw new Error(response.message);
     }
     return response.entity!;
   }

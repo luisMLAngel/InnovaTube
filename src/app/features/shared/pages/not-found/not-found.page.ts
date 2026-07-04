@@ -8,7 +8,6 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './not-found.page.html',
   styleUrls: ['./not-found.page.scss'],
   imports: [CommonModule, ButtonModule],
-  standalone: true,
 })
 export class NotFoundPage {
   constructor(private router: Router) {}

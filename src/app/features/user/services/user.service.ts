@@ -4,14 +4,19 @@ import { MeInterface, UserInterface } from '../../../core/interfaces';
 import { environment } from '../../../environments';
 import { BaseService } from '../../../shared/http/base/base.service';
 import { DataBaseServiceResponse } from '../../../shared/http/base/interfaces/data-base-service-response.interface';
+import { StorageService } from '../../../core/services';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
   private readonly SERVER: string = environment.SERVER;
   private readonly baseService = inject(BaseService);
+  private readonly storageService = inject(StorageService);
   constructor() {}
 
-  async me(): Promise<UserInterface> {
+  async me(): Promise<UserInterface | null> {
+    if (!this.storageService.getAccessToken()) {
+      return null;
+    }
     const response: DataBaseServiceResponse<UserInterface> = await firstValueFrom(
       this.baseService.get<UserInterface>(`${this.SERVER}/users/me`),
     );

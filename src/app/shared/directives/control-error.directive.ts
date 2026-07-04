@@ -38,7 +38,6 @@ export const CONTROL_ERRORS: Record<string, (control: AbstractControl) => string
 
 @Directive({
   selector: '[errorMessage]',
-  standalone: true,
 })
 export class FormErrorDirective implements OnInit, OnDestroy {
   showErrors: InputSignal<boolean> = input<boolean>(false);

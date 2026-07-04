@@ -31,12 +31,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimations(),
     provideHttpClient(
-      withInterceptors([
-        AuthInterceptorFn,
-        AuthErrorInterceptorFn,
-        // httpErrorInterceptor,
-        loaderInterceptor,
-      ]),
+      withInterceptors([AuthInterceptorFn, AuthErrorInterceptorFn, loaderInterceptor]),
     ),
   ],
 };

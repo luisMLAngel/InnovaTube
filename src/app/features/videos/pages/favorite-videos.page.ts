@@ -46,7 +46,6 @@ export class FavoriteVideosPage implements OnInit {
 
   private async loadFavoriteVideos(): Promise<void> {
     try {
-      console.log('obtener favoritos');
       const favorites = await this.videoService.getFavoriteVideos();
       this.videos = favorites.map(f => ({
         ...f.Video,

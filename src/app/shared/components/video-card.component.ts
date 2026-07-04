@@ -6,7 +6,6 @@ import { Video } from '../../features/videos/interfaces/video.interface';
 
 @Component({
   selector: 'app-video-card',
-  standalone: true,
   imports: [CommonModule, DatePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `

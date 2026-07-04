@@ -32,9 +32,12 @@
           <h3 class="font-medium text-w-prim text-sm mb-1">
             {{ message.summary }}
           </h3>
-          <p *ngIf="message.detail" class="text-ink-secondary-w text-xs leading-relaxed">
-            {{ message.detail }}
-          </p>
+
+          @if (message.detail) {
+            <p class="text-ink-secondary-w text-xs leading-relaxed">
+              {{ message.detail }}
+            </p>
+          }
         </div>
 
         <!-- Botón cerrar -->

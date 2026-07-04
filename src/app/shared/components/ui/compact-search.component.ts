@@ -25,7 +25,6 @@ export interface SearchEvent {
 
 @Component({
   selector: 'app-compact-search',
-  standalone: true,
   imports: [CommonModule, InputTextModule, ButtonModule, TooltipModule, NgIconComponent],
   providers: [
     provideIcons({

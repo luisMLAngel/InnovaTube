@@ -142,25 +142,8 @@ export class AppTemplate implements OnInit {
   protected readonly authFacadeService = inject(AuthFacadeService);
   protected readonly userFacadeService = inject(UserFacadeService);
   protected readonly layoutService = inject(LayoutService);
-  private readonly router = inject(Router);
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  /**
-   * Acción del botón flotante - navega a crear nuevo según la ruta actual
-   */
-  onNewAction(): void {
-    const currentUrl = this.router.url;
-
-    if (currentUrl.includes('/follow-ups')) {
-      this.router.navigate(['/o/follow-ups/new']);
-    } else if (currentUrl.includes('/clients')) {
-      this.router.navigate(['/o/clients/new']);
-    } else if (currentUrl.includes('/action-types')) {
-      this.router.navigate(['/o/configuration/action-types/new']);
-    }
-    // Agregar más casos según sea necesario
-  }
 }

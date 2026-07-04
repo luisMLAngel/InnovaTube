@@ -20,7 +20,6 @@ export interface EmptyStateConfig {
 
 @Component({
   selector: 'app-empty-state',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="bg-canvas-w flex flex-col">

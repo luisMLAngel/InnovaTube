@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthTemplate } from './core/templates';
 import { AppTemplate } from './core/templates';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,7 @@ export const routes: Routes = [
   {
     path: 'videos',
     component: AppTemplate,
+    canActivate: [authGuard],
     children: [
       {
         path: '',

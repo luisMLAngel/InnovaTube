@@ -71,7 +71,6 @@ import { Router } from '@angular/router';
       </ng-template>
     </p-popover>
   `,
-  standalone: true,
   imports: [CommonModule, NgIcon, PopoverModule, Divider, SelectButtonModule, FormsModule, Avatar],
   providers: [provideIcons({ tablerLogout2, tablerChevronUp, tablerSettings, tablerHelpHexagon })],
 })

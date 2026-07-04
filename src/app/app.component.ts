@@ -21,10 +21,15 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.userFacadeService.me().then(() => {
-      if (this.router.url === '/') {
-        this.router.navigate(['videos']);
-      }
-    });
+    this.userFacadeService
+      .me()
+      .then(() => {
+        if (this.router.url === '/' || this.router.url.includes('/auth')) {
+          this.router.navigate(['videos']);
+        }
+      })
+      .catch(e => {
+        this.router.navigate(['auth', 'login']);
+      });
   }
 }

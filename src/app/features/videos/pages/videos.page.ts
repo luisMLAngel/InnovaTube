@@ -9,6 +9,7 @@ import { VideoListComponent } from '../../../shared/components/video-list.compon
 import { VideoService } from '../services/video.service';
 import { MessageService } from 'primeng/api';
 import { HeaderPageComponent } from '../../../shared/components';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-videos',
@@ -46,7 +47,7 @@ export class VideosPage implements OnInit {
 
   private async loadPopularVideos(): Promise<void> {
     try {
-      const videos = await this.youtubeService.getPopularVideos().toPromise();
+      const videos = await firstValueFrom(this.youtubeService.getPopularVideos());
       this.videos = await this.markFavoritesIfExist(videos ?? []);
     } catch {
       this.videos = [];

@@ -38,7 +38,6 @@ export class VideoListComponent {
     this.internalVideos.update(list =>
       list.map(v => (v.id === video.id ? { ...v, isFavorite: !v.isFavorite } : v)),
     );
-    console.log('video', video);
     this.toggledFavorite.emit(video);
   }
 }
